@@ -1,0 +1,73 @@
+/* =========================================
+   ACERCA DE NOSOTROS
+   ========================================= */
+.bg-seccion-clara {
+    background-color: var(--gris-perla);
+    padding: 60px 0;
+}
+
+.card-conocenos {
+    background-color: var(--blanco-puro);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03); /* Sombra muy suave tipo Apple */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card-mvv {
+    background-color: var(--blanco-puro);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    margin-bottom: 30px;
+}
+
+.caja-icono-mvv {
+    background-color: var(--gris-perla);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 250px;
+}
+
+.caja-icono-mvv img {
+    max-width: 120px; 
+    object-fit: contain;
+}
+
+.titulo-dorado-linea {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid var(--dorado-acento);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.seccion-cta {
+    background-color: var(--negro-obsidiana);
+    color: var(--blanco-puro);
+    border-radius: 16px;
+    padding: 60px 20px;
+    margin: 60px auto;
+    max-width: 1100px;
+    text-align: center;
+}
+
+/* Asegurar visibilidad del botón en el CTA */
+.seccion-cta .btn-dorado {
+    background-color: var(--dorado-acento) !important;
+    color: var(--blanco-puro) !important;
+    border: 2px solid var(--dorado-acento) !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+.seccion-cta .btn-dorado:hover {
+    background-color: var(--dorado-claro) !important;
+    border-color: var(--dorado-claro) !important;
+    color: var(--blanco-puro) !important;
+}
