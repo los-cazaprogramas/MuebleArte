@@ -1,0 +1,199 @@
+"categoria":  "Sillas": {
+    {
+    "id": 1,
+    "nombre": "Silla Escandinava",
+    "categoria": "Sillas",
+    "precio": 1899,
+    "descuento": 15,
+    "imagen": "/img/silla-escandinava.jpg",
+    "descripcion": "Silla moderna con respaldo ergonómico y asiento acolchonado.",
+    "especificaciones": {
+      "color": "Blanco",
+      "material": "Madera y tela",
+      "peso_soportado": "120 kg",
+      "dimensiones": "48 x 52 x 82 cm"
+    },
+    "stock": 15,
+    "destacado": true
+  },
+  {
+    "id": 2,
+    "nombre": "Silla Industrial Negra",
+    "categoria": "Sillas",
+    "precio": 2199,
+    "descuento": 10,
+    "imagen": "/img/silla-industrial.jpg",
+    "descripcion": "Silla de estilo industrial con estructura metálica resistente.",
+    "especificaciones": {
+      "color": "Negro mate",
+      "material": "Metal y madera",
+      "peso_soportado": "130 kg",
+      "dimensiones": "50 x 55 x 85 cm"
+    },
+    "stock": 10,
+    "destacado": false
+  },
+
+
+},
+
+
+"categoria":  "Mesas": {
+     {
+    "id": 3,
+    "nombre": "Mesa de Centro Minimalista",
+    "categoria": "Mesas",
+    "precio": 3499,
+    "descuento": 12,
+    "imagen": "/img/mesa-centro.jpg",
+    "descripcion": "Mesa de centro moderna fabricada en madera sólida.",
+    "especificaciones": {
+      "color": "Nogal",
+      "material": "Madera de pino",
+      "peso_soportado": "45 kg",
+      "dimensiones": "120 x 60 x 45 cm"
+    },
+    "stock": 8,
+    "destacado": true
+  },
+  {
+    "id": 4,
+    "nombre": "Mesa Comedor Roble",
+    "categoria": "Mesas",
+    "precio": 7999,
+    "descuento": 18,
+    "imagen": "/img/mesa-roble.jpg",
+    "descripcion": "Mesa de comedor elegante con acabado en roble natural.",
+    "especificaciones": {
+      "color": "Roble claro",
+      "material": "Madera de encino",
+      "peso_soportado": "160 kg",
+      "dimensiones": "180 x 90 x 75 cm"
+    },
+    "stock": 5,
+    "destacado": true
+  },
+
+},
+
+
+"categoria":  "Bases_para_camas": {
+   {
+    "id": 5,
+    "nombre": "Base para Cama Queen",
+    "categoria": "Bases para cama",
+    "precio": 6599,
+    "descuento": 20,
+    "imagen": "/img/base-cama-queen.jpg",
+    "descripcion": "Base para cama tamaño queen con estructura reforzada.",
+    "especificaciones": {
+      "color": "Chocolate",
+      "material": "Madera y acero",
+      "peso_soportado": "280 kg",
+      "dimensiones": "160 x 200 x 35 cm"
+    },
+    "stock": 6,
+    "destacado": true
+  },
+  {
+    "id": 6,
+    "nombre": "Base para Cama Individual",
+    "categoria": "Bases para cama",
+    "precio": 4299,
+    "descuento": 8,
+    "imagen": "/img/base-cama-individual.jpg",
+    "descripcion": "Base individual compacta ideal para espacios pequeños.",
+    "especificaciones": {
+      "color": "Gris oscuro",
+      "material": "Metal",
+      "peso_soportado": "180 kg",
+      "dimensiones": "100 x 190 x 30 cm"
+    },
+    "stock": 9,
+    "destacado": false
+  },
+
+},
+
+
+"categoria":  "Cajoneras": {
+    {
+    "id": 7,
+    "nombre": "Cajonera Moderna",
+    "categoria": "Cajoneras",
+    "precio": 3899,
+    "descuento": 14,
+    "imagen": "/img/cajonera-moderna.jpg",
+    "descripcion": "Cajonera contemporánea con seis compartimentos amplios.",
+    "especificaciones": {
+      "color": "Blanco mate",
+      "material": "MDF",
+      "peso_soportado": "70 kg",
+      "dimensiones": "120 x 45 x 80 cm"
+    },
+    "stock": 7,
+    "destacado": true
+  },
+  {
+    "id": 8,
+    "nombre": "Cajonera Vintage",
+    "categoria": "Cajoneras",
+    "precio": 4599,
+    "descuento": 10,
+    "imagen": "/img/cajonera-vintage.jpg",
+    "descripcion": "Cajonera estilo vintage con acabados rústicos elegantes.",
+    "especificaciones": {
+      "color": "Café oscuro",
+      "material": "Madera de pino",
+      "peso_soportado": "85 kg",
+      "dimensiones": "130 x 50 x 85 cm"
+    },
+    "stock": 4,
+    "destacado": false
+  },
+},
+
+
+"categoria":  "Libreros": {
+    {
+    "id": 9,
+    "nombre": "Librero Vertical",
+    "categoria": "Libreros",
+    "precio": 2799,
+    "descuento": 10,
+    "imagen": "/img/librero-vertical.jpg",
+    "descripcion": "Librero moderno con cinco niveles y diseño minimalista.",
+    "especificaciones": {
+      "color": "Roble claro",
+      "material": "MDF laminado",
+      "peso_soportado": "60 kg",
+      "dimensiones": "80 x 35 x 190 cm"
+    },
+    "stock": 9,
+    "destacado": true
+  },
+  {
+    "id": 10,
+    "nombre": "Librero Industrial",
+    "categoria": "Libreros",
+    "precio": 5199,
+    "descuento": 16,
+    "imagen": "/img/librero-industrial.jpg",
+    "descripcion": "Librero de estilo industrial con estructura metálica reforzada.",
+    "especificaciones": {
+      "color": "Negro y nogal",
+      "material": "Metal y madera",
+      "peso_soportado": "100 kg",
+      "dimensiones": "140 x 40 x 200 cm"
+    },
+    "stock": 5,
+    "destacado": true
+  }
+
+},
+
+
+
+
+
+  
