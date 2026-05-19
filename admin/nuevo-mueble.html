@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Mueble | MuebleArte Admin</title>
+    <link rel="stylesheet" href="nuevo-mueble.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>MuebleArte <span>Admin</span></h2>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="index.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                <a href="nuevo-mueble.html" class="active"><i class="fa-solid fa-plus"></i> Añadir Mueble</a>
+                <a href="#"><i class="fa-solid fa-couch"></i> Inventario</a>
+                <a href="#" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="main-header">
+                <div class="welcome-text">
+                    <h1>Añadir Nuevo Mueble</h1>
+                    <p>Agrega las especificaciones del nuevo producto para el catálogo.</p>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html" class="btn-secondary">
+                        <i class="fa-solid fa-arrow-left"></i> Volver al Dashboard
+                    </a>
+                </div>
+            </header>
+
+            <section class="form-container">
+                <form id="furniture-form">
+                    
+                    <div class="form-group">
+                        <label for="furniture-name">Nombre del Mueble *</label>
+                        <input type="text" id="furniture-name" required placeholder="Ej. Silla Nórdica de Roble">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="furniture-category">Categoría *</label>
+                            <select id="furniture-category" required>
+                                <option value="">Selecciona una categoría...</option>
+                                <option value="sillas">Sillas</option>
+                                <option value="mesas">Mesas</option>
+                                <option value="sillones">Sillones</option>
+                                <option value="recamaras">Recámaras</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="furniture-price">Precio (MXN) *</label>
+                            <input type="number" id="furniture-price" min="0" step="0.01" required placeholder="0.00">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="furniture-description">Descripción Detallada *</label>
+                        <textarea id="furniture-description" rows="5" required placeholder="Especificaciones de materiales, dimensiones, colores disponibles..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Imagen del Mueble *</label>
+                        <div class="image-upload-zone" id="upload-zone">
+                            <input type="file" id="image-input" accept="image/*" required>
+                            <div class="upload-placeholder" id="upload-placeholder">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p>Haz clic para seleccionar o arrastra la imagen aquí</p>
+                                <span>Formatos admitidos: JPG, PNG (Max. 5MB)</span>
+                            </div>
+                            <img id="image-preview" class="preview-img" alt="Vista previa del mueble">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">
+                            <i class="fa-solid fa-save"></i> Registrar Mueble en Catálogo
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('image-input');
+        const uploadZone = document.getElementById('upload-zone');
+        const uploadPlaceholder = document.getElementById('upload-placeholder');
+        const imagePreview = document.getElementById('image-preview');
+        const furnitureForm = document.getElementById('furniture-form');
+        uploadZone.addEventListener('click', () => {
+            imageInput.click();
+        });
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.addEventListener('load', function() {
+                    uploadPlaceholder.style.display = 'none';
+                    imagePreview.src = this.result;
+                    imagePreview.style.display = 'block';
+                });
+                
+                reader.readAsDataURL(file);
+            }
+        });
+        furnitureForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log("Formulario listo para enviar datos.");
+        });
+    </script>
+</body>
+</html>
