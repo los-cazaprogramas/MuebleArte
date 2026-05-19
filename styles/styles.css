@@ -1,0 +1,135 @@
+/* Importación de fuentes*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+    --blanco-puro: #FFFFFF;
+    --gris-perla: #F5F5F7;
+    --gris-piedra: #F0F0F2;
+    --negro-obsidiana: #1D1D1F;
+    --acero: #86868B;
+    --marino-primario: #1A2530;
+    --dorado-acento: #A67C00;
+    --dorado-claro: #D4AF37;
+}
+
+/* Estilos y tipografía */
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: var(--negro-obsidiana);
+    background-color: var(--blanco-puro);
+}
+
+h1, h2, h3, h4, h5, h6, .card-title, #au\.titulo {
+    font-weight: 700; /* Jerarquía en títulos */
+    color: var(--marino-primario);
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Encabezado y navegación */
+.header-mueblearte .nav-enlaces .nav-link {
+    color: var(--marino-primario) !important;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.header-mueblearte .nav-enlaces .nav-link:hover {
+    color: var(--dorado-acento) !important;
+}
+
+/* Botones */
+.btn-dorado {
+    background-color: var(--dorado-acento);
+    color: var(--blanco-puro);
+    font-weight: 600;
+    border: 2px solid var(--dorado-acento);
+    transition: all 0.3s ease;
+}
+
+.btn-dorado:hover {
+    background-color: var(--dorado-claro);
+    border-color: var(--dorado-claro);
+    color: var(--blanco-puro);
+}
+
+.btn-outline-marino {
+    color: var(--marino-primario);
+    border: 2px solid var(--marino-primario);
+    background-color: transparent;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-marino:hover {
+    background-color: var(--marino-primario);
+    color: var(--blanco-puro);
+}
+
+/* ¿Quiénes somos? */
+.seccion-quienes-somos p {
+    text-align: justify;
+    color: var(--negro-obsidiana);
+}
+
+/* Misión, visión y valores */
+.seccion-mvv p {
+    text-align: justify;
+}
+
+/* Para igualar la altura de las 3 imágenes para que el texto debajo inicie parejo en Misión-Visión-Valores*/
+.img-mvv {
+    height: 120px; 
+    object-fit: contain;
+    margin-bottom: 25px;
+    margin-top: 15px;
+}
+
+/* PAra quitar los bordes y fondo de bootstrap para un diseño más limpio y justificado */
+.lista-valores {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: justify;
+}
+
+.lista-valores li {
+    margin-bottom: 12px;
+}
+
+/* Equipo de trabajo */
+.seccion-equipo .card {
+    border: 1px solid var(--gris-piedra);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Footer */
+.bg-marino {
+    background-color: var(--marino-primario);
+}
+
+#piepagina h5 {
+    color: var(--blanco-puro);
+    font-weight: 600;
+}
+
+#piepagina .nav-link {
+    transition: color 0.3s ease;
+}
+
+#piepagina .nav-link:hover {
+    color: var(--dorado-acento) !important;
+    text-decoration: underline;
+}
+
+/* Para que los íconos de las redes sean de color blanco */
+#piepagina .link-light svg {
+    fill: var(--blanco-puro);
+    transition: fill 0.3s ease;
+}
+
+#piepagina .link-light:hover svg {
+    fill: var(--dorado-acento);
+}

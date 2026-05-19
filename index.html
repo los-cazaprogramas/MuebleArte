@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es"> <!--Idioma español-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> <!--Enlace con Bootstrap-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"> <!-- Google Fonts: Inter -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> <!-- Mejorar la legibilidad en pantallas de ordenadores y dispositivos móviles google Fonts: Inter-->
+    <link href="/styles/header-footer.css" rel="stylesheet" type="text/css"><!--Enlaces con CSS pero de aboutus-->
+    <link href="/styles/index.css" rel="stylesheet" type="text/css"><!--Enlaces con CSS pero de index.css-->
+  </head>
+
+
+  <body>
+  <!------------------------------------------------------------------------------------------Encabezado Inicio---------------------------------------------------------------------------------------------------------------------------------------------------------->
+<header class="header-mueble-arte">
+  <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
+    
+    <!-- 1. Logo a la Izquierda (Intacto) -->
+    <div class="logo-wrapper">
+      <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+    </div>
+
+    <!-- NUEVO: Botón de Hamburguesa (Solo visible en móviles) -->
+    <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
+      <i class="bi bi-list fs-1 text-dark"></i>
+    </button>
+
+    <!-- NUEVO: Contenedor que agrupa todo el menú -->
+    <div class="contenedor-menu d-flex align-items-center" id="menuPrincipal">
+      
+      <!-- 2. Navegación a Inicio -->
+      <ul class="nav align-items-center gap-3 mx-lg-3">
+        <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
+        <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorías
+          </a>
+          <ul class="dropdown-menu shadow-sm border-0">
+            <li><a class="dropdown-item" href="/pages/libreros.html">Libreros</a></li>
+            <li><a class="dropdown-item" href="/pages/sillas.html">Sillas</a></li>
+            <li><a class="dropdown-item" href="/pages/mesas.html">Mesas</a></li>
+            <li><a class="dropdown-item" href="/pages/base-cama.html">Bases para cama</a></li>
+            <li><a class="dropdown-item" href="/pages/cajoneras.html">Cajoneras</a></li>
+          </ul>
+        </li>
+        <li><a href="/pages/preguntas-frecuentes.html" class="nav-link-custom">Preguntas frecuentes</a></li>
+      </ul>
+
+      <!-- 3. Barra de Búsqueda -->
+      <div class="search-container mx-lg-auto my-3 my-lg-0">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-end-0 rounded-start-pill">
+            <i class="bi bi-search text-secondary"></i>
+          </span>
+          <input type="text" class="form-control bg-light border-start-0 rounded-end-pill shadow-none" placeholder="Buscar muebles...">
+        </div>
+      </div>
+
+      <!-- 4. Acciones de Usuario -->
+      <div class="acciones-usuario d-flex align-items-center gap-2 ms-lg-3">
+        <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
+          <i class="bi bi-cart3"></i> Carrito
+        </a>
+        <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
+          <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+        </a>
+        <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
+          <i class="bi bi-person-plus"></i> Registrarse
+        </a>
+      </div>
+
+    </div>
+</nav>
+<!-- Fondo oscuro que aparece detrás del menú en móviles/tablets -->
+<div class="fondo-oscuro-menu d-lg-none" id="fondoMenu"></div>
+</header>
+<!----------------------------------------------------------------------------------------------------------------Fin del encabezado-------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- ========== HERO CARRUSEL ========== -->
+<div id="heroCarousel" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://placehold.co/1920x600/f5f5f7/1d1d1f?text=MuebleArte+Hero+1" class="d-block w-100 hero-img" alt="Muebles que transforman espacios">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                <h1 class="fw-bold">Transforma tu espacio en hogar</h1>
+                <p>Muebles de madera con diseño artesanal y contemporáneo</p>
+                <a href="#categorias" class="btn btn-cta">Ver categorías</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://placehold.co/1920x600/f5f5f7/1d1d1f?text=MuebleArte+Hero+2" class="d-block w-100 hero-img" alt="Calidad y sustentabilidad">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                <h1 class="fw-bold">Hechos con pasión y responsabilidad</h1>
+                <p>Materiales sustentables que cuidan el planeta</p>
+                <a href="/pages/about-us.html" class="btn btn-cta">Conócenos</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://placehold.co/1920x600/f5f5f7/1d1d1f?text=MuebleArte+Hero+3" class="d-block w-100 hero-img" alt="Diseño para todas las edades">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                <h1 class="fw-bold">Para jóvenes y adultos</h1>
+                <p>Piezas que te acompañan en cada etapa de tu vida</p>
+                <a href="#productos" class="btn btn-cta">Ver productos</a>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+<!-- ========== SECCIÓN CATEGORÍAS ========== -->
+<div id="categorias" class="container mb-5">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold" style="color: var(--texto-principal);">Categorías</h2>
+        <p class="lead" style="color: var(--texto-secundario);">Encuentra el mueble perfecto para cada espacio</p>
+    </div>
+    
+    <!-- Sillas -->
+    <div class="categoria-section mb-5">
+        <h3 class="mb-4 pb-2 border-bottom d-inline-block" style="border-color: var(--color-dorado-light); color: var(--texto-principal);">🪑 Sillas</h3>
+        <div class="product-carousel-container">
+            <button class="carousel-btn prev-btn" onclick="scrollCarousel('sillasCarousel', -1)">‹</button>
+            <div id="sillasCarousel" class="product-carousel d-flex">
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Silla+1" class="card-img-top" alt="Silla comedor">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Silla Comedor Nórdica</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Madera de pino tapizada</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$1,299 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Silla+2" class="card-img-top" alt="Silla escritorio">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Silla Ejecutiva</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Ergonómica, piel ecológica</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$2,499 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Silla+3" class="card-img-top" alt="Silla mecedora">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mecedora Rústica</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Madera de cedro</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$3,199 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Silla+4" class="card-img-top" alt="Banco">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Banco Industrial</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Madera reciclada</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$1,899 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next-btn" onclick="scrollCarousel('sillasCarousel', 1)">›</button>
+        </div>
+    </div>
+
+    <!-- Mesas -->
+    <div class="categoria-section mb-5">
+        <h3 class="mb-4 pb-2 border-bottom d-inline-block" style="border-color: var(--color-dorado-light); color: var(--texto-principal);">🪵 Mesas</h3>
+        <div class="product-carousel-container">
+            <button class="carousel-btn prev-btn" onclick="scrollCarousel('mesasCarousel', -1)">‹</button>
+            <div id="mesasCarousel" class="product-carousel d-flex">
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Mesa+1" class="card-img-top" alt="Mesa comedor">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mesa Comedor 6 puestos</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Parota maciza</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$4,999 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Mesa+2" class="card-img-top" alt="Mesa centro">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mesa de Centro</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Diseño minimalista</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$1,799 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Mesa+3" class="card-img-top" alt="Escritorio">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Escritorio Moderno</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Con cajones integrados</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$2,899 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Mesa+4" class="card-img-top" alt="Mesa plegable">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mesa Plegable</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Ideal para espacios pequeños</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$1,499 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next-btn" onclick="scrollCarousel('mesasCarousel', 1)">›</button>
+        </div>
+    </div>
+
+    <!-- Libreros -->
+    <div class="categoria-section mb-5">
+        <h3 class="mb-4 pb-2 border-bottom d-inline-block" style="border-color: var(--color-dorado-light); color: var(--texto-principal);">📚 Libreros</h3>
+        <div class="product-carousel-container">
+            <button class="carousel-btn prev-btn" onclick="scrollCarousel('librerosCarousel', -1)">‹</button>
+            <div id="librerosCarousel" class="product-carousel d-flex">
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Librero+1" class="card-img-top" alt="Librero clásico">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Librero 5 entrepaños</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Madera de pino</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$2,499 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Librero+2" class="card-img-top" alt="Librero moderno">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Librero Flotante</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Diseño geométrico</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$1,899 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <img src="https://placehold.co/280x200/f5f5f7/1d1d1f?text=Librero+3" class="card-img-top" alt="Repisa">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Repisa Esquinera</h5>
+                        <p class="card-text" style="color: var(--texto-secundario);">Aprovecha cada rincón</p>
+                        <p class="fw-bold fs-5" style="color: var(--color-marino);">$899 MXN</p>
+                        <button class="btn btn-agregar w-100">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next-btn" onclick="scrollCarousel('librerosCarousel', 1)">›</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== SECCIÓN OFERTA ========== -->
+<div class="container seccion-oferta py-5 my-5">
+    <div class="text-center">
+        <span class="badge-oferta">Oferta especial</span>
+        <h2 class="display-6 fw-bold" style="color: var(--texto-principal);">¡Lleva el tuyo con 15% de descuento!</h2>
+        <p class="mb-4" style="color: var(--texto-secundario);">En compras mayores a $3,000 MXN. Válido por tiempo limitado.</p>
+        <a href="#" class="btn btn-cta btn-lg">Ver promociones</a>
+    </div>
+</div>
+
+<!--Inicio del pie de página-->
+<!--Agregué un nuevo contenedor para ponerle diseño al footer-->
+<div class="container-fluid mt-5 p-0 bg-marino">
+  <div class="container" id="piepagina">
+    <footer class="pt-5 pb-3">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Secciones</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/index.html" class="nav-link p-0">Inicio</a></li>
+            <li class="nav-item mb-2"><a href="/pages/carrito.html" class="nav-link p-0">Carrito de compra</a></li>
+            <li class="nav-item mb-2"><a href="/pages/login.html" class="nav-link p-0">Iniciar sesión</a></li>
+            <li class="nav-item mb-2"><a href="/pages/crear-perfil.html" class="nav-link p-0">Crear perfil</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Atención al cliente</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/pages/contacto.html" class="nav-link p-0">Contáctanos</a></li>
+            <li class="nav-item mb-2"><a href="/pages/preguntas-frecuentes.html" class="nav-link p-0">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Acerca de MuebleArte</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/pages/about-us.html" class="nav-link p-0">Acerca de nosotros</a></li>
+          </ul>
+        </div>
+        <div class="col-md-5 offset-md-1 mb-3">
+          <form>
+            <h5>Suscríbete para recibir lo mejor de MuebleArte</h5>
+            <p>¡No te pierdas de nada!</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Email</label>
+              <input id="newsletter1" type="email" class="form-control" placeholder="Correo electrónico">
+              <button class="btn btn-dorado" type="button">Suscribirse</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 mb-1 border-top border-secondary">
+        <p class="mb-0">© 2026 MuebleArte, Inc. Todos los derechos reservados.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3">
+            <a class="link-light" target="_blank" href="https://www.instagram.com/mueble_arte_/" aria-label="Instagram">
+              <i class="bi bi-instagram fs-4"></i>
+            </a>
+          </li>
+          <li class="ms-3">
+            <a class="link-light" href="#" target="_blank" aria-label="Facebook">
+              <i class="bi bi-facebook fs-4"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</div>
+<!--Fin del pie de página-->
+
+
+<!--Enlaces finales-->
+    <script src="./js/script.js"></script> <!--Enlace con JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> <!--Enlace con Bootstrap-->
+</body>
+</html>

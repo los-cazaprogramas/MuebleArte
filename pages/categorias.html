@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías - MuebleArte</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Estilos globales (header, footer, variables) -->
+    <link href="../styles/header-footer.css" rel="stylesheet">
+    <!-- Estilos específicos para la página de categorías -->
+    <link href="../styles/categorias.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ==================== HEADER (idéntico al original) ==================== -->
+<header class="header-mueble-arte">
+    <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
+        <div class="logo-wrapper">
+            <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+        </div>
+        <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
+            <i class="bi bi-list fs-1 text-dark"></i>
+        </button>
+        <div class="contenedor-menu d-flex align-items-center" id="menuPrincipal">
+            <ul class="nav align-items-center gap-3 mx-lg-3">
+                <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
+                <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías</a>
+                    <ul class="dropdown-menu shadow-sm border-0">
+                        <li><a class="dropdown-item" href="/pages/libreros.html">Libreros</a></li>
+                        <li><a class="dropdown-item" href="/pages/sillas.html">Sillas</a></li>
+                        <li><a class="dropdown-item" href="/pages/mesas.html">Mesas</a></li>
+                        <li><a class="dropdown-item" href="/pages/base-cama.html">Bases para cama</a></li>
+                        <li><a class="dropdown-item" href="/pages/cajoneras.html">Cajoneras</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pages/preguntas-frecuentes.html" class="nav-link-custom">Preguntas frecuentes</a></li>
+            </ul>
+            <div class="search-container mx-lg-auto my-3 my-lg-0">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0 rounded-start-pill">
+                        <i class="bi bi-search text-secondary"></i>
+                    </span>
+                    <input type="text" class="form-control bg-light border-start-0 rounded-end-pill shadow-none" placeholder="Buscar muebles...">
+                </div>
+            </div>
+            <div class="acciones-usuario d-flex align-items-center gap-2 ms-lg-3">
+                <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
+                    <i class="bi bi-cart3"></i> Carrito
+                </a>
+                <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
+                    <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                </a>
+                <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
+                    <i class="bi bi-person-plus"></i> Registrarse
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="fondo-oscuro-menu d-lg-none" id="fondoMenu"></div>
+</header>
+
+<!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+<main class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold" style="color: var(--marino-primario);">Explora nuestras categorías</h1>
+        <p class="lead text-muted">Elige la categoría que más te guste y descubre nuestros muebles de alta calidad.</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Tarjeta: Cajoneras -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card categoria-card h-100">
+                <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=300&fit=crop" class="card-img-top" alt="Cajoneras">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Cajoneras</h5>
+                    <p class="card-text">Organiza tu espacio con nuestras elegantes cajoneras de madera maciza.</p>
+                    <a href="/pages/cajoneras.html" class="btn btn-gold mt-auto">Ver categoría →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Tarjeta: Libreros -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card categoria-card h-100">
+                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&h=300&fit=crop" class="card-img-top" alt="Libreros">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Libreros</h5>
+                    <p class="card-text">Libreros modernos y funcionales, ideales para cualquier ambiente.</p>
+                    <a href="/pages/libreros.html" class="btn btn-gold mt-auto">Ver categoría →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Tarjeta: Mesas -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card categoria-card h-100">
+                <img src="https://images.unsplash.com/photo-1616486338817-3b69f5a6b6c4?w=400&h=300&fit=crop" class="card-img-top" alt="Mesas">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Mesas</h5>
+                    <p class="card-text">Mesas de centro, comedor y auxiliares con diseños únicos.</p>
+                    <a href="/pages/mesas.html" class="btn btn-gold mt-auto">Ver categoría →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Tarjeta: Sillas -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card categoria-card h-100">
+                <img src="https://images.unsplash.com/photo-1612872087720-b5b89e3b70fb?w=400&h=300&fit=crop" class="card-img-top" alt="Sillas">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Sillas</h5>
+                    <p class="card-text">Sillas ergonómicas, tapizadas y de madera para cada necesidad.</p>
+                    <a href="/pages/sillas.html" class="btn btn-gold mt-auto">Ver categoría →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Tarjeta: Bases para cama -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card categoria-card h-100">
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&h=300&fit=crop" class="card-img-top" alt="Bases para cama">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Bases para cama</h5>
+                    <p class="card-text">Bases resistentes y elegantes para un descanso perfecto.</p>
+                    <a href="/pages/base-cama.html" class="btn btn-gold mt-auto">Ver categoría →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- ==================== FOOTER (idéntico al original) ==================== -->
+<div class="container-fluid mt-5 p-0 bg-marino">
+    <div class="container" id="piepagina">
+        <footer class="pt-5 pb-3">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Secciones</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/index.html" class="nav-link p-0">Inicio</a></li>
+                        <li class="nav-item mb-2"><a href="/pages/carrito.html" class="nav-link p-0">Carrito de compra</a></li>
+                        <li class="nav-item mb-2"><a href="/pages/login.html" class="nav-link p-0">Iniciar sesión</a></li>
+                        <li class="nav-item mb-2"><a href="/pages/crear-perfil.html" class="nav-link p-0">Crear perfil</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Atención al cliente</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/pages/contacto.html" class="nav-link p-0">Contáctanos</a></li>
+                        <li class="nav-item mb-2"><a href="/pages/preguntas-frecuentes.html" class="nav-link p-0">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Acerca de MuebleArte</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/pages/about-us.html" class="nav-link p-0">Acerca de nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                        <h5>Suscríbete para recibir lo mejor de MuebleArte</h5>
+                        <p>¡No te pierdas de nada!</p>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email</label>
+                            <input id="newsletter1" type="email" class="form-control" placeholder="Correo electrónico">
+                            <button class="btn btn-dorado" type="button">Suscribirse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 mb-1 border-top border-secondary">
+                <p class="mb-0">© 2026 MuebleArte, Inc. Todos los derechos reservados.</p>
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3"><a class="link-light" target="_blank" href="https://www.instagram.com/mueble_arte_/" aria-label="Instagram"><i class="bi bi-instagram fs-4"></i></a></li>
+                    <li class="ms-3"><a class="link-light" href="#" target="_blank" aria-label="Facebook"><i class="bi bi-facebook fs-4"></i></a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="../js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
