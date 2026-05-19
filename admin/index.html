@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | MuebleArte</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>MuebleArte <span>Admin</span></h2>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="index.html" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                <a href="nuevo-mueble.html"><i class="fa-solid fa-plus"></i> Añadir Mueble</a>
+                <a href="#"><i class="fa-solid fa-couch"></i> Inventario</a>
+                <a href="#" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="main-header">
+                <div class="welcome-text">
+                    <h1>Bienvenido, Administrador</h1>
+                    <p>Estado actual de la tienda.</p>
+                </div>
+                <div class="header-actions">
+                    <a href="nuevo-mueble.html" class="btn-primary">
+                        <i class="fa-solid fa-plus"></i> Nuevo Mueble
+                    </a>
+                </div>
+            </header>
+
+            <section class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-chair"></i></div>
+                    <div class="metric-info">
+                        <h3>Total Muebles</h3>
+                        <p id="total-muebles" class="metric-value">0</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-tags"></i></div>
+                    <div class="metric-info">
+                        <h3>Categorías</h3>
+                        <p id="total-categorias" class="metric-value">0</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-eye"></i></div>
+                    <div class="metric-info">
+                        <h3>Visitas Hoy</h3>
+                        <p id="total-visitas" class="metric-value">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="table-container">
+                <div class="table-header">
+                    <h2>Muebles en Exhibición</h2>
+                </div>
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-table-body">
+                        </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
