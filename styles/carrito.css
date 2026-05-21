@@ -132,7 +132,6 @@
     background-color: var(--color-dorado-light);
 }
 
-<<<<<<< HEAD
 /* Controles de cantidad */
 .btn-qty {
     width: 32px;
@@ -174,8 +173,6 @@
     font-size: 1rem;
 }
 
-=======
->>>>>>> 11caca5bcc4bc736ea1f4b705cf1ad1301c89f74
 /* Responsive */
 @media (max-width: 768px) {
     .cart-products-container {

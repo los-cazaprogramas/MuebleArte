@@ -58,7 +58,6 @@ function eliminarProducto(idProducto) {
     renderizarCarrito();
 }
 
-<<<<<<< HEAD
 function cambiarCantidad(id, delta) {
     const item = carrito.find(p => p.id === id);
     if (!item) return;
@@ -71,8 +70,6 @@ function cambiarCantidad(id, delta) {
     renderizarMiniCarrito();
 }
 
-=======
->>>>>>> 11caca5bcc4bc736ea1f4b705cf1ad1301c89f74
 function vaciarCarrito() {
     carrito = [];
     guardarCarrito();
@@ -110,15 +107,11 @@ function renderizarCarrito() {
                     <div class="col-md-5 col-8">
                         <h3 class="product-title">${item.nombre}</h3>
                         <p class="product-description">${item.descripcion}</p>
-<<<<<<< HEAD
                         <div class="d-flex align-items-center gap-2 mt-2">
                             <button class="btn btn-qty btn-qty-minus" onclick="cambiarCantidad(${item.id}, -1)">−</button>
                             <span class="fw-semibold qty-value">${item.cantidad}</span>
                             <button class="btn btn-qty btn-qty-plus" onclick="cambiarCantidad(${item.id}, 1)">+</button>
                         </div>
-=======
-                        <div class="product-quantity">Cantidad: ${item.cantidad}</div>
->>>>>>> 11caca5bcc4bc736ea1f4b705cf1ad1301c89f74
                         <div class="d-flex flex-wrap gap-2 mt-2">
                             <a href="${item.link}" class="btn btn-sm btn-outline-view btn-capsule">
                                 <i class="bi bi-eye"></i> Ver producto
@@ -164,17 +157,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Botón proceder al pago
-<<<<<<< HEAD
         const pagoBtn = document.getElementById("procederPagoBtn");
-=======
-    const pagoBtn = document.getElementById("procederPagoBtn");
->>>>>>> 11caca5bcc4bc736ea1f4b705cf1ad1301c89f74
     if (pagoBtn) {
         pagoBtn.addEventListener("click", () => {
             alert("Funcionalidad de pago en construcción. El carrito se ha guardado.");
         });
     }
-<<<<<<< HEAD
 });
 
 // ---------- MINI CARRITO (OFFCANVAS) ----------
@@ -248,6 +236,3 @@ function eliminarProductoMini(idProducto) {
     eliminarProducto(idProducto);
     renderizarMiniCarrito();
 }
-=======
-});
->>>>>>> 11caca5bcc4bc736ea1f4b705cf1ad1301c89f74
