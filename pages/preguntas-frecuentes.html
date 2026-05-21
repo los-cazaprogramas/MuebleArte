@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es"> <!--Idioma español-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas frecuentes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> <!--Enlace con Bootstrap-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"> <!-- Google Fonts: Inter -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> <!-- Mejorar la legibilidad en pantallas de ordenadores y dispositivos móviles google Fonts: Inter-->
+    <link href="../styles/header-footer.css" rel="stylesheet" type="text/css"><!--Enlaces con CSS pero de aboutus-->
+    <link href="/styles/faq.css" rel="stylesheet" type="text/css"><!--Enlace con CSS pero de preguntas frecuentes-->
+  </head>
+
+
+  <body>
+  <!------------------------------------------------------------------------------------------Encabezado Inicio---------------------------------------------------------------------------------------------------------------------------------------------------------->
+<header class="header-mueble-arte">
+  <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
+    
+    <!-- 1. Logo a la Izquierda (Intacto) -->
+    <div class="logo-wrapper">
+      <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+    </div>
+
+    <!-- NUEVO: Botón de Hamburguesa (Solo visible en móviles) -->
+    <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
+      <i class="bi bi-list fs-1 text-dark"></i>
+    </button>
+
+    <!-- NUEVO: Contenedor que agrupa todo el menú -->
+    <div class="contenedor-menu d-flex align-items-center" id="menuPrincipal">
+      
+      <!-- 2. Navegación a Inicio -->
+      <ul class="nav align-items-center gap-3 mx-lg-3">
+        <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
+        <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorías
+          </a>
+          <ul class="dropdown-menu shadow-sm border-0">
+            <li><a class="dropdown-item" href="/pages/libreros.html">Libreros</a></li>
+            <li><a class="dropdown-item" href="/pages/sillas.html">Sillas</a></li>
+            <li><a class="dropdown-item" href="/pages/mesas.html">Mesas</a></li>
+            <li><a class="dropdown-item" href="/pages/base-cama.html">Bases para cama</a></li>
+            <li><a class="dropdown-item" href="/pages/cajoneras.html">Cajoneras</a></li>
+          </ul>
+        </li>
+        <li><a href="/pages/preguntas-frecuentes.html" class="nav-link-custom">Preguntas frecuentes</a></li>
+      </ul>
+
+      <!-- 3. Barra de Búsqueda -->
+      <div class="search-container mx-lg-auto my-3 my-lg-0">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-end-0 rounded-start-pill">
+            <i class="bi bi-search text-secondary"></i>
+          </span>
+          <input type="text" class="form-control bg-light border-start-0 rounded-end-pill shadow-none" placeholder="Buscar muebles...">
+        </div>
+      </div>
+
+      <!-- 4. Acciones de Usuario -->
+      <div class="acciones-usuario d-flex align-items-center gap-2 ms-lg-3">
+        <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
+          <i class="bi bi-cart3"></i> Carrito
+        </a>
+        <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
+          <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+        </a>
+        <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
+          <i class="bi bi-person-plus"></i> Registrarse
+        </a>
+      </div>
+
+    </div>
+</nav>
+<!-- Fondo oscuro que aparece detrás del menú en móviles/tablets -->
+<div class="fondo-oscuro-menu d-lg-none" id="fondoMenu"></div>
+</header>
+<!----------------------------------------------------------------------------------------------------------------Fin del encabezado-------------------------------------------------------------------------------------------------------------------------------->
+<!--Inicio del cuerpo-->
+<!-- =========================================
+     FAQ MUEBLEARTE - CONTENIDO
+     Solo sección FAQ (sin header ni footer)
+========================================= -->
+
+<section class="faq-mueblearte">
+
+    <!-- Hero FAQ -->
+    <section class="faq-hero">
+        <div class="faq-hero-overlay"></div>
+
+        <div class="faq-hero-content container">
+            <span class="faq-badge">Centro de Ayuda</span>
+
+            <h1>Preguntas Frecuentes</h1>
+
+            <p>
+                Encuentra respuestas rápidas sobre compras, pagos, envíos,
+                garantías, armado y más.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contenido FAQ -->
+    <section class="faq-section container">
+
+        <div class="faq-header">
+            <h2>¿Cómo podemos ayudarte?</h2>
+            <p>
+                Hemos reunido las preguntas más comunes para brindarte una
+                experiencia de compra más clara, segura y sencilla.
+            </p>
+        </div>
+
+        <!-- =========================
+             PEDIDOS Y COMPRAS
+        ========================== -->
+        <div class="faq-category">
+
+            <div class="faq-category-title">
+                <h3>Pedidos y Compras</h3>
+            </div>
+
+            <div class="faq-accordion">
+
+                <div class="faq-item active">
+                    <button class="faq-question">
+                        <span>¿Necesito crear una cuenta para realizar una compra?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Para realizar cualquier compra en MuebleArte es necesario
+                            contar con un usuario registrado. Esto nos permite brindarte
+                            una mejor experiencia, dar seguimiento a tus pedidos y
+                            mantener segura tu información de compra.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Cómo sabré si mi compra fue confirmada?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Una vez realizada tu compra, recibirás un correo electrónico
+                            de confirmación con el resumen de los productos adquiridos,
+                            dirección de envío registrada y un tiempo estimado de entrega.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Puedo cancelar mi pedido?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Sí, las cancelaciones son posibles siempre y cuando el pago
+                            aún no haya sido procesado por la institución bancaria y el
+                            pedido no haya sido enviado.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Puedo modificar un pedido después de realizarlo?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            No. Una vez confirmada la compra, no es posible realizar
+                            modificaciones al pedido. Si deseas cambiar un producto,
+                            será necesario iniciar el proceso de devolución y generar
+                            una nueva compra.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Todos los productos están disponibles para compra inmediata?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Trabajamos únicamente con inventario disponible, por lo
+                            que todos los productos visibles en la tienda pueden
+                            adquirirse inmediatamente.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- =========================
+             PAGOS Y FACTURACIÓN
+        ========================== -->
+        <div class="faq-category">
+
+            <div class="faq-category-title">
+                <h3>Pagos y Facturación</h3>
+            </div>
+
+            <div class="faq-accordion">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Qué métodos de pago aceptan?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Aceptamos pagos con tarjetas de débito y crédito.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Puedo comprar a meses sin intereses?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Las promociones de meses sin intereses dependen directamente
+                            de tu institución bancaria y de los beneficios habilitados
+                            en tu tarjeta.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Qué tarjetas aceptan?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Aceptamos tarjetas Visa, MasterCard y American Express.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Mi pago es seguro?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Todos los pagos son procesados mediante una pasarela
+                            de pago segura diseñada para proteger tu información.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- =========================
+             ENVÍOS Y ENTREGAS
+        ========================== -->
+        <div class="faq-category">
+
+            <div class="faq-category-title">
+                <h3>Envíos y Entregas</h3>
+            </div>
+
+            <div class="faq-accordion">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿En qué zonas realizan entregas?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Actualmente realizamos entregas únicamente dentro
+                            de la Ciudad de México (CDMX).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Cuánto tiempo tarda en llegar mi pedido?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            El tiempo estimado de entrega es de 3 a 5 días hábiles
+                            posteriores a la confirmación de compra.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Puedo rastrear mi pedido?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Podrás dar seguimiento utilizando el número de
+                            pedido proporcionado.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- =========================
+             PRODUCTOS Y MATERIALES
+        ========================== -->
+        <div class="faq-category">
+
+            <div class="faq-category-title">
+                <h3>Productos y Materiales</h3>
+            </div>
+
+            <div class="faq-accordion">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Qué materiales utilizan en sus muebles?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Nuestros productos están elaborados con MDF, madera
+                            sólida, metal y diferentes tipos de tapizados.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Los muebles incluyen medidas exactas?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Cada producto cuenta con una ficha técnica
+                            detallada con medidas exactas y especificaciones.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- =========================
+             GARANTÍAS Y DEVOLUCIONES
+        ========================== -->
+        <div class="faq-category">
+
+            <div class="faq-category-title">
+                <h3>Garantías y Devoluciones</h3>
+            </div>
+
+            <div class="faq-accordion">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Los productos cuentan con garantía?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Todos nuestros productos cuentan con una garantía
+                            de 30 días posteriores a la recepción del pedido.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Aceptan devoluciones?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Las devoluciones podrán solicitarse dentro de
+                            los primeros 7 días posteriores a la recepción.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- =========================
+             ARMADO Y CUIDADOS
+        ========================== -->
+        <div class="faq-category">
+
+            <div class="faq-category-title">
+                <h3>Armado y Cuidados</h3>
+            </div>
+
+            <div class="faq-accordion">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Todos los muebles requieren ensamblaje?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            No. Algunos productos llegan completamente armados,
+                            mientras otros requieren ensamblaje sencillo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Ofrecen servicio de armado?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            No. Sin embargo, nuestros productos están diseñados
+                            para ensamblarse fácilmente mediante el instructivo incluido.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+</section>
+
+
+<!--Inicio del pie de página-->
+<!--Agregué un nuevo contenedor para ponerle diseño al footer-->
+<div class="container-fluid mt-5 p-0 bg-marino">
+  <div class="container" id="piepagina">
+    <footer class="pt-5 pb-3">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Secciones</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/index.html" class="nav-link p-0">Inicio</a></li>
+            <li class="nav-item mb-2"><a href="/pages/carrito.html" class="nav-link p-0">Carrito de compra</a></li>
+            <li class="nav-item mb-2"><a href="/pages/login.html" class="nav-link p-0">Iniciar sesión</a></li>
+            <li class="nav-item mb-2"><a href="/pages/crear-perfil.html" class="nav-link p-0">Crear perfil</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Atención al cliente</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/pages/contacto.html" class="nav-link p-0">Contáctanos</a></li>
+            <li class="nav-item mb-2"><a href="/pages/preguntas-frecuentes.html" class="nav-link p-0">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Acerca de MuebleArte</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/pages/about-us.html" class="nav-link p-0">Acerca de nosotros</a></li>
+          </ul>
+        </div>
+        <div class="col-md-5 offset-md-1 mb-3">
+          <form>
+            <h5>Suscríbete para recibir lo mejor de MuebleArte</h5>
+            <p>¡No te pierdas de nada!</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Email</label>
+              <input id="newsletter1" type="email" class="form-control" placeholder="Correo electrónico">
+              <button class="btn btn-dorado" type="button">Suscribirse</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 mb-1 border-top border-secondary">
+        <p class="mb-0">© 2026 MuebleArte, Inc. Todos los derechos reservados.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3">
+            <a class="link-light" target="_blank" href="https://www.instagram.com/mueble_arte_/" aria-label="Instagram">
+              <i class="bi bi-instagram fs-4"></i>
+            </a>
+          </li>
+          <li class="ms-3">
+            <a class="link-light" href="#" target="_blank" aria-label="Facebook">
+              <i class="bi bi-facebook fs-4"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</div>
+<!--Fin del pie de página-->
+
+
+<!--Enlaces finales-->
+    <script src="../js/script.js"></script> <!--Enlace con JavaScript-->
+    <script src="/scripts/faq.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> <!--Enlace con Bootstrap-->
+</body>
+</html>

@@ -327,6 +327,7 @@ h1, h2, h3, h4, h5, h6 {
 .product-card .fw-bold.fs-5 {
     color: var(--color-marino);
     font-weight: 700;
+<<<<<<< HEAD
 }
 
 /* =========================================
@@ -389,4 +390,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     font-size: 0.85rem;
     font-weight: 600;
+=======
+>>>>>>> 11caca5bcc4bc736ea1f4b705cf1ad1301c89f74
 }
