@@ -1,0 +1,392 @@
+
+:root {
+    /* Fondos */
+    --fondo-principal: #ffffff;
+    --fondo-tarjetas: #f5f5f7;
+    --fondo-tarjetas-hover: #f0f0f2;
+    
+    /* Textos */
+    --texto-principal: #1d1d1f;
+    --texto-secundario: #86868b;
+    
+    /* Colores de marca */
+    --color-marino: #1A2530;
+    --color-dorado: #A67C00;
+    --color-dorado-light: #D4AF37;
+}
+
+/* =========================================
+   TIPOGRAFÍA (Inter)
+   ========================================= */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--fondo-principal);
+    color: var(--texto-principal);
+}
+
+/* Jerarquía de títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}
+
+.display-5, .display-6 {
+    font-weight: 700;
+}
+
+.lead, .card-text, p {
+    font-weight: 400;
+}
+
+.card-title, .nav-link-custom, .btn {
+    font-weight: 600;
+}
+
+/* =========================================
+   CONTENEDOR GENERAL
+   ========================================= */
+.categoria-section {
+    margin-bottom: 4rem;
+    padding: 0 1.5rem;
+}
+
+.product-carousel-container {
+    position: relative;
+    padding: 0 2rem;
+    margin: 0 -1rem;
+}
+
+.product-carousel {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    overflow-x: auto;
+    padding: 1rem 0.5rem;
+    gap: 1.5rem;
+}
+
+.product-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+/* =========================================
+   CARDS DE PRODUCTOS
+   ========================================= */
+.product-card {
+    width: 280px;
+    min-width: 280px;
+    background-color: var(--fondo-tarjetas);
+    border: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    background-color: var(--fondo-tarjetas-hover);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.product-card img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card .card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--texto-principal);
+}
+
+.product-card .card-text {
+    color: var(--texto-secundario);
+    font-weight: 400;
+}
+
+.product-card .fw-bold {
+    color: var(--color-marino);
+    font-weight: 700;
+}
+
+/* =========================================
+   BOTÓN AGREGAR AL CARRITO
+   ========================================= */
+.btn-agregar {
+    background-color: var(--color-marino) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600;
+    padding: 8px 0;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+
+.btn-agregar:hover {
+    background-color: var(--color-dorado) !important;
+    color: var(--color-marino) !important;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   BOTONES DE CARRUSEL
+   ========================================= */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-marino);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-btn:hover {
+    background-color: var(--color-dorado);
+    color: var(--color-marino);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.prev-btn {
+    left: -8px;
+}
+
+.next-btn {
+    right: -8px;
+}
+
+/* =========================================
+   RESPONSIVE BOTONES CARRUSEL
+   ========================================= */
+@media (max-width: 1200px) {
+    .prev-btn {
+        left: -4px;
+    }
+    .next-btn {
+        right: -4px;
+    }
+}
+
+@media (max-width: 768px) {
+    .categoria-section {
+        padding: 0 0.5rem;
+    }
+    
+    .product-carousel-container {
+        padding: 0 1.5rem;
+    }
+    
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+    }
+    
+    .prev-btn {
+        left: -8px;
+    }
+    
+    .next-btn {
+        right: -8px;
+    }
+    
+    .product-card {
+        width: 240px;
+        min-width: 240px;
+    }
+}
+
+@media (max-width: 576px) {
+    .prev-btn {
+        left: -12px;
+    }
+    .next-btn {
+        right: -12px;
+    }
+    
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+    }
+}
+
+/* =========================================
+   SECCIÓN DE OFERTA
+   ========================================= */
+.seccion-oferta {
+    background-color: var(--fondo-tarjetas);
+    border-radius: 24px;
+    margin: 3rem auto;
+}
+
+.seccion-oferta h2 {
+    color: var(--texto-principal);
+    font-weight: 700;
+}
+
+.seccion-oferta p {
+    color: var(--texto-secundario);
+    font-weight: 400;
+}
+
+/* Badge de oferta */
+.badge-oferta {
+    background-color: var(--color-dorado-light);
+    color: var(--color-marino);
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 40px;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+/* Botón CTA de oferta */
+.btn-cta {
+    background-color: var(--color-dorado);
+    color: white;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-cta:hover {
+    background-color: var(--color-dorado-light);
+    color: var(--color-marino);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   HERO CARRUSEL
+   ========================================= */
+.hero-img {
+    height: 550px;
+    object-fit: cover;
+}
+
+/* Títulos del carrusel */
+.carousel-caption h1 {
+    font-weight: 700;
+}
+
+.carousel-caption p {
+    font-weight: 400;
+}
+
+@media (max-width: 992px) {
+    .hero-img {
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-img {
+        height: 350px;
+    }
+}
+
+/* =========================================
+   CATEGORÍAS - TÍTULOS
+   ========================================= */
+#categorias .text-center h2 {
+    color: var(--texto-principal);
+    font-weight: 700;
+}
+
+#categorias .text-center p {
+    color: var(--texto-secundario);
+    font-weight: 400;
+}
+
+.categoria-section h3 {
+    color: var(--texto-principal);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-dorado-light);
+    display: inline-block;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+}
+
+/* =========================================
+   PRECIOS DE PRODUCTOS
+   ========================================= */
+.product-card .fw-bold.fs-5 {
+    color: var(--color-marino);
+    font-weight: 700;
+}
+
+/* =========================================
+   MINI CARRITO (OFFCANVAS)
+   ========================================= */
+.mini-cart-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.mini-cart-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--fondo-tarjetas);
+}
+.mini-cart-item-info {
+    flex: 1;
+    min-width: 0;
+}
+.mini-cart-item-info .mini-nombre {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texto-principal);
+    margin-bottom: 2px;
+}
+.mini-cart-item-info .mini-precio {
+    color: var(--color-marino);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.mini-cart-footer {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding-top: 12px;
+}
+.btn-qty-mini {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0;
+    border: 1px solid #ccc;
+    background: white;
+    line-height: 1;
+    cursor: pointer;
+}
+.btn-qty-mini:hover {
+    background-color: var(--fondo-tarjetas);
+}
+.qty-value-mini {
+    min-width: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
