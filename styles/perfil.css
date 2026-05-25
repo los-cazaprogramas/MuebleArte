@@ -1,0 +1,29 @@
+.perfil-avatar {
+    font-size: 5rem;
+    color: #b08d57;
+}
+
+.card {
+    border-radius: 24px;
+}
+
+.list-group-item {
+    border: none;
+    border-radius: 14px !important;
+    margin-bottom: 8px;
+}
+
+.list-group-item.active {
+    background-color: #b08d57;
+    border: none;
+}
+
+.btn-gold {
+    background-color: #b08d57;
+    color: white;
+    border: none;
+}
+
+.btn-gold:hover {
+    opacity: 0.9;
+}
