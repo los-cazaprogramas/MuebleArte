@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <link rel="icon" type="image/png" href="/assets/pestañaimg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link href="../styles/header-footer.css" rel="stylesheet">
+    <link href="../styles/perfil.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header-mueble-arte">
+    <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
+
+        <div class="logo-wrapper">
+      <a href="/index.html">
+        <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+      </a>
+    </div>
+
+        <div class="acciones-usuario d-flex align-items-center gap-2">
+
+            <a href="/index.html"
+            class="btn btn-capsule btn-outline-dark">
+
+                <i class="bi bi-house"></i>
+                Inicio
+            </a>
+
+            <button
+            id="cerrarSesionHeader"
+            class="btn btn-danger">
+
+                Cerrar sesión
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- PERFIL -->
+<div class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3">
+
+            <div class="card shadow-sm border-0 rounded-4">
+
+                <div class="card-body p-4">
+
+                    <div class="text-center mb-4">
+
+                        <div class="perfil-avatar mb-3">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+
+                        <h5 id="nombreSidebar">
+                            Usuario
+                        </h5>
+
+                    </div>
+
+                    <div class="list-group border-0">
+
+                        <button
+                        class="list-group-item list-group-item-action active">
+
+                            <i class="bi bi-person me-2"></i>
+                            Mi perfil
+                        </button>
+
+                        <button
+                        id="cerrarSesionBtn"
+                        class="list-group-item list-group-item-action text-danger">
+
+                            <i class="bi bi-box-arrow-right me-2"></i>
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Contenido -->
+        <div class="col-lg-9">
+
+            <div class="card shadow-sm border-0 rounded-4">
+
+                <div class="card-body p-5">
+
+                    <h2 class="mb-4">
+                        Información Personal
+                    </h2>
+
+                    <div class="row gy-4">
+
+                        <div class="col-md-6">
+
+                            <label class="text-muted">
+                                Nombre
+                            </label>
+
+                            <h5 id="nombreCompleto">
+                                —
+                            </h5>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="text-muted">
+                                Correo electrónico
+                            </label>
+
+                            <h5 id="emailUsuario">
+                                —
+                            </h5>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="text-muted">
+                                Teléfono
+                            </label>
+
+                            <h5 id="telefonoUsuario">
+                                —
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mt-5">
+
+                        <button class="btn btn-gold">
+                            Editar perfil
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="../js/script.js"></script>
+<script src="/scripts/perfil.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

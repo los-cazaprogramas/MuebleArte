@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sillas</title>
+    <link rel="icon" type="image/png" href="/assets/pestañaimg.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> <!--Enlace con Bootstrap-->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"> <!-- Google Fonts: Inter -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> <!-- Mejorar la legibilidad en pantallas de ordenadores y dispositivos móviles google Fonts: Inter-->
@@ -18,9 +19,10 @@
     
     <!-- 1. Logo a la Izquierda (Intacto) -->
     <div class="logo-wrapper">
-      <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+      <a href="/index.html">
+        <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+      </a>
     </div>
-
     <!-- NUEVO: Botón de Hamburguesa (Solo visible en móviles) -->
     <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
       <i class="bi bi-list fs-1 text-dark"></i>
@@ -60,16 +62,62 @@
 
       <!-- 4. Acciones de Usuario -->
       <div class="acciones-usuario d-flex align-items-center gap-2 ms-lg-3">
-        <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
-          <i class="bi bi-cart3"></i> Carrito
+
+  <!-- Carrito -->
+  <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
+    <i class="bi bi-cart3"></i> Carrito
+  </a>
+
+  <!-- Botones invitado -->
+  <div id="botonesAuth" class="d-flex gap-2">
+
+    <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
+      <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+    </a>
+
+    <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
+      <i class="bi bi-person-plus"></i> Registrarse
+    </a>
+
+  </div>
+
+  <!-- Usuario logueado -->
+  <div id="usuarioLogueado" class="dropdown d-none">
+
+    <button
+      class="btn btn-capsule btn-gold dropdown-toggle text-white"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      id="nombreUsuarioNavbar">
+
+      Usuario
+
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+
+      <li>
+        <a class="dropdown-item" href="/pages/perfil.html">
+          Mi perfil
         </a>
-        <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
-          <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
-        </a>
-        <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
-          <i class="bi bi-person-plus"></i> Registrarse
-        </a>
-      </div>
+      </li>
+
+      <li>
+        <button
+          class="dropdown-item text-danger"
+          id="cerrarSesionBtn">
+
+          Cerrar sesión
+
+        </button>
+      </li>
+
+    </ul>
+
+  </div>
+
+</div>
 
     </div>
 </nav>
@@ -143,6 +191,7 @@
 
 <!--Enlaces finales-->
     <script src="../js/script.js"></script> <!--Enlace con JavaScript-->
+    <script src="../scripts/auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> <!--Enlace con Bootstrap-->
 </body>
 </html>

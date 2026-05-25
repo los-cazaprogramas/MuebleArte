@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de compras - MuebleArte</title>
+    <title>Carrito de Compras</title>
+    <link rel="icon" type="image/png" href="/assets/pestañaimg.png">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts: Inter -->
@@ -19,52 +20,118 @@
 
 <!-- ==================== HEADER ==================== -->
 <header class="header-mueble-arte">
-    <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
-        <div class="logo-wrapper">
-            <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+  <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
+    
+    <!-- 1. Logo a la Izquierda (Intacto) -->
+    <div class="logo-wrapper">
+      <a href="/index.html">
+        <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+      </a>
+    </div>
+
+    <!-- NUEVO: Botón de Hamburguesa (Solo visible en móviles) -->
+    <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
+      <i class="bi bi-list fs-1 text-dark"></i>
+    </button>
+
+    <!-- NUEVO: Contenedor que agrupa todo el menú -->
+    <div class="contenedor-menu d-flex align-items-center" id="menuPrincipal">
+      
+      <!-- 2. Navegación a Inicio -->
+      <ul class="nav align-items-center gap-3 mx-lg-3">
+        <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
+        <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorías
+          </a>
+          <ul class="dropdown-menu shadow-sm border-0">
+            <li><a class="dropdown-item" href="/pages/libreros.html">Libreros</a></li>
+            <li><a class="dropdown-item" href="/pages/sillas.html">Sillas</a></li>
+            <li><a class="dropdown-item" href="/pages/mesas.html">Mesas</a></li>
+            <li><a class="dropdown-item" href="/pages/base-cama.html">Bases para cama</a></li>
+            <li><a class="dropdown-item" href="/pages/cajoneras.html">Cajoneras</a></li>
+          </ul>
+        </li>
+        <li><a href="/pages/preguntas-frecuentes.html" class="nav-link-custom">Preguntas frecuentes</a></li>
+      </ul>
+
+      <!-- 3. Barra de Búsqueda -->
+      <div class="search-container mx-lg-auto my-3 my-lg-0">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-end-0 rounded-start-pill">
+            <i class="bi bi-search text-secondary"></i>
+          </span>
+          <input type="text" class="form-control bg-light border-start-0 rounded-end-pill shadow-none" placeholder="Buscar muebles...">
         </div>
-        <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
-            <i class="bi bi-list fs-1 text-dark"></i>
+      </div>
+
+      <!-- 4. Acciones de Usuario -->
+      <div class="acciones-usuario d-flex align-items-center gap-2 ms-lg-3">
+
+  <!-- Carrito -->
+  <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
+    <i class="bi bi-cart3"></i> Carrito
+  </a>
+
+  <!-- Botones invitado -->
+  <div id="botonesAuth" class="d-flex gap-2">
+
+    <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
+      <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+    </a>
+
+    <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
+      <i class="bi bi-person-plus"></i> Registrarse
+    </a>
+
+  </div>
+
+  <!-- Usuario logueado -->
+  <div id="usuarioLogueado" class="dropdown d-none">
+
+    <button
+      class="btn btn-capsule btn-gold dropdown-toggle text-white"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      id="nombreUsuarioNavbar">
+
+      Usuario
+
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+
+      <li>
+        <a class="dropdown-item" href="/pages/perfil.html">
+          Mi perfil
+        </a>
+      </li>
+
+      <li>
+        <button
+          class="dropdown-item text-danger"
+          id="cerrarSesionBtn">
+
+          Cerrar sesión
+
         </button>
-        <div class="contenedor-menu d-flex align-items-center" id="menuPrincipal">
-            <ul class="nav align-items-center gap-3 mx-lg-3">
-                <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
-                <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías</a>
-                    <ul class="dropdown-menu shadow-sm border-0">
-                        <li><a class="dropdown-item" href="/pages/libreros.html">Libreros</a></li>
-                        <li><a class="dropdown-item" href="/pages/sillas.html">Sillas</a></li>
-                        <li><a class="dropdown-item" href="/pages/mesas.html">Mesas</a></li>
-                        <li><a class="dropdown-item" href="/pages/base-cama.html">Bases para cama</a></li>
-                        <li><a class="dropdown-item" href="/pages/cajoneras.html">Cajoneras</a></li>
-                    </ul>
-                </li>
-                <li><a href="/pages/preguntas-frecuentes.html" class="nav-link-custom">Preguntas frecuentes</a></li>
-            </ul>
-            <div class="search-container mx-lg-auto my-3 my-lg-0">
-                <div class="input-group">
-                    <span class="input-group-text bg-light border-end-0 rounded-start-pill">
-                        <i class="bi bi-search text-secondary"></i>
-                    </span>
-                    <input type="text" class="form-control bg-light border-start-0 rounded-end-pill shadow-none" placeholder="Buscar muebles...">
-                </div>
-            </div>
-            <div class="acciones-usuario d-flex align-items-center gap-2 ms-lg-3">
-                <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
-                    <i class="bi bi-cart3"></i> Carrito
-                </a>
-                <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
-                    <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
-                </a>
-                <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
-                    <i class="bi bi-person-plus"></i> Registrarse
-                </a>
-            </div>
-        </div>
-    </nav>
-    <div class="fondo-oscuro-menu d-lg-none" id="fondoMenu"></div>
+      </li>
+
+    </ul>
+
+  </div>
+
+</div>
+
+    </div>
+</nav>
+<!-- Fondo oscuro que aparece detrás del menú en móviles/tablets -->
+<div class="fondo-oscuro-menu d-lg-none" id="fondoMenu"></div>
 </header>
+<!----------------------------------------------------------------------------------------------------------------Fin del encabezado-------------------------------------------------------------------------------------------------------------------------------->
+
 
 <!-- ==================== CONTENIDO DEL CARRITO ==================== -->
 <main class="container my-5">
@@ -173,6 +240,7 @@
 
 <!-- Scripts -->
 <script src="../scripts/carrito.js"></script>
+<script src="../scripts/auth.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
