@@ -328,3 +328,65 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-marino);
     font-weight: 700;
 }
+
+/* =========================================
+   MINI CARRITO (OFFCANVAS)
+   ========================================= */
+.mini-cart-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.mini-cart-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--fondo-tarjetas);
+}
+.mini-cart-item-info {
+    flex: 1;
+    min-width: 0;
+}
+.mini-cart-item-info .mini-nombre {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texto-principal);
+    margin-bottom: 2px;
+}
+.mini-cart-item-info .mini-precio {
+    color: var(--color-marino);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.mini-cart-footer {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding-top: 12px;
+}
+.btn-qty-mini {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0;
+    border: 1px solid #ccc;
+    background: white;
+    line-height: 1;
+    cursor: pointer;
+}
+.btn-qty-mini:hover {
+    background-color: var(--fondo-tarjetas);
+}
+.qty-value-mini {
+    min-width: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+}

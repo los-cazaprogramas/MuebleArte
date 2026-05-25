@@ -1,0 +1,270 @@
+/* =========================================
+   ACERCA DE NOSOTROS - ESTILOS ESPECÍFICOS
+   ========================================= */
+
+/* 1. SECCIONES GENERALES */
+.bg-seccion-clara {
+    background-color: var(--gris-perla);
+    padding: 60px 0;
+}
+
+.card-conocenos {
+    background-color: var(--blanco-puro);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03); /* Sombra muy suave */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 2. MISIÓN, VISIÓN Y VALORES */
+.card-mvv {
+    background-color: var(--blanco-puro);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    margin-bottom: 30px;
+}
+
+.caja-icono-mvv {
+    background-color: var(--gris-perla);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 250px;
+}
+
+.caja-icono-mvv img {
+    max-width: 120px; 
+    object-fit: contain;
+}
+
+.titulo-dorado-linea {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid var(--dorado-acento);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* 3. PORTADA (HERO SECTION) */
+.hero-acerca {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1927&auto=format&fit=crop') no-repeat center center/cover;
+    height: 50vh; 
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 30px 30px; 
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+.hero-acerca-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(26, 37, 48, 0.85), rgba(26, 37, 48, 0.3)); /* Degradado marino */
+    z-index: 1;
+}
+
+.hero-acerca-contenido {
+    position: relative;
+    z-index: 2; 
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-acerca-contenido h1 {
+    font-size: 3.5rem;
+    letter-spacing: -1px;
+    color: var(--blanco-puro);
+}
+
+.hero-acerca-contenido p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--gris-perla);
+}
+
+/* 4. CALL TO ACTION (CTA) */
+.seccion-cta {
+    background-color: var(--negro-obsidiana);
+    color: var(--blanco-puro);
+    border-radius: 16px;
+    padding: 60px 20px;
+    margin: 60px auto;
+    max-width: 1100px;
+    text-align: center;
+}
+
+/* 5. EQUIPO DE TRABAJO (CARRUSEL) */
+#carouselEquipo {
+    position: relative;
+}
+
+.equipo-container {
+    position: relative;
+}
+
+.img-wrapper {
+    overflow: hidden;
+    border-radius: 25px 25px 0 0; /* Evita que la imagen sobresalga del borde curvo */
+}
+
+/* Controles de navegación del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 40%; /* Mejor centrado vertical respecto a las fotos */
+    bottom: auto;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: auto; /* Evita que el control bloquee clics en las tarjetas */
+}
+
+.carousel-control-prev {
+    left: -15px; 
+}
+
+.carousel-control-next {
+    right: -15px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--marino-primario);
+    border-radius: 50%;
+    padding: 20px;
+    background-size: 50%; /* Icono más proporcionado dentro del círculo */
+    transition: background-color 0.3s ease;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: var(--dorado-acento);
+}
+
+#carouselEquipo .carousel-item {
+    padding: 40px 0;
+    border-radius: 35px;
+}
+
+/* Tarjetas individuales del equipo */
+#carouselEquipo .card {
+    border: none;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+#carouselEquipo .card-body {
+    text-align: center;
+    align-items: center;
+    background-color: var(--blanco-puro);
+}
+
+#carouselEquipo .card img {
+    height: 280px;
+    width: 100%; 
+    object-fit: cover;
+    object-position: top;
+    display: block; 
+}
+
+/* Botón de LinkedIn en tarjetas */
+#carouselEquipo .btn-marino {
+    background-color: var(--marino-primario);
+    color: var(--blanco-puro);
+    border: none;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Empuja el botón hacia el final de la tarjeta */
+}
+
+#carouselEquipo .btn-marino:hover {
+    background-color: var(--dorado-acento);
+    color: var(--blanco-puro);
+}
+
+
+/* =========================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================= */
+
+/* Fondo general del footer */
+.bg-marino {
+    background-color: var(--marino-primario);
+}
+
+#piepagina {
+    color: var(--gris-perla); /* Color de texto general para párrafos */
+}
+
+#piepagina h5 {
+    color: var(--dorado-acento);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+#piepagina p {
+    color: var(--gris-perla);
+    font-size: 0.95rem;
+}
+
+/* Enlaces del Footer (Usando especificidad en lugar de !important) */
+body #piepagina .nav-link {
+    color: var(--blanco-puro);
+    transition: all 0.3s ease;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 0.95rem;
+}
+
+body #piepagina .nav-link:hover {
+    color: var(--dorado-acento);
+    text-decoration: none;
+    transform: translateX(5px); /* Efecto sutil de desplazamiento al pasar el ratón */
+}
+
+/* Íconos de redes sociales */
+#piepagina .link-light i,
+#piepagina .link-light svg {
+    color: var(--blanco-puro);
+    fill: var(--blanco-puro);
+    transition: all 0.3s ease;
+}
+
+#piepagina .link-light:hover i,
+#piepagina .link-light:hover svg {
+    color: var(--dorado-acento);
+    fill: var(--dorado-acento);
+    transform: scale(1.15); /* Efecto de crecimiento sutil */
+}
+
+/* Input del Newsletter */
+#piepagina .form-control {
+    background-color: transparent;
+    border: 1px solid var(--acero);
+    color: var(--blanco-puro);
+}
+
+#piepagina .form-control::placeholder {
+    color: var(--acero);
+}
+
+#piepagina .form-control:focus {
+    background-color: transparent;
+    border-color: var(--dorado-acento);
+    box-shadow: 0 0 0 0.25rem rgba(166, 124, 0, 0.25); /* Sombra dorada al dar clic */
+    color: var(--blanco-puro);
+}

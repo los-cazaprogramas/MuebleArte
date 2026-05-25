@@ -58,6 +58,18 @@ function eliminarProducto(idProducto) {
     renderizarCarrito();
 }
 
+function cambiarCantidad(id, delta) {
+    const item = carrito.find(p => p.id === id);
+    if (!item) return;
+    item.cantidad += delta;
+    if (item.cantidad <= 0) {
+        carrito = carrito.filter(p => p.id !== id);
+    }
+    guardarCarrito();
+    renderizarCarrito();
+    renderizarMiniCarrito();
+}
+
 function vaciarCarrito() {
     carrito = [];
     guardarCarrito();
@@ -95,7 +107,11 @@ function renderizarCarrito() {
                     <div class="col-md-5 col-8">
                         <h3 class="product-title">${item.nombre}</h3>
                         <p class="product-description">${item.descripcion}</p>
-                        <div class="product-quantity">Cantidad: ${item.cantidad}</div>
+                        <div class="d-flex align-items-center gap-2 mt-2">
+                            <button class="btn btn-qty btn-qty-minus" onclick="cambiarCantidad(${item.id}, -1)">−</button>
+                            <span class="fw-semibold qty-value">${item.cantidad}</span>
+                            <button class="btn btn-qty btn-qty-plus" onclick="cambiarCantidad(${item.id}, 1)">+</button>
+                        </div>
                         <div class="d-flex flex-wrap gap-2 mt-2">
                             <a href="${item.link}" class="btn btn-sm btn-outline-view btn-capsule">
                                 <i class="bi bi-eye"></i> Ver producto
@@ -141,10 +157,82 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Botón proceder al pago
-    const pagoBtn = document.getElementById("procederPagoBtn");
+        const pagoBtn = document.getElementById("procederPagoBtn");
     if (pagoBtn) {
         pagoBtn.addEventListener("click", () => {
             alert("Funcionalidad de pago en construcción. El carrito se ha guardado.");
         });
     }
 });
+
+// ---------- MINI CARRITO (OFFCANVAS) ----------
+function agregarProductoDesdeCard(boton) {
+    const card = boton.closest('.product-card');
+    if (!card) return;
+    const producto = {
+        id: parseInt(card.dataset.id),
+        nombre: card.dataset.nombre,
+        precio: parseInt(card.dataset.precio),
+        imagen: card.dataset.imagen,
+        descripcion: card.dataset.descripcion || "",
+        link: "#"
+    };
+    agregarProducto(producto);
+    renderizarMiniCarrito();
+    mostrarMiniCarrito();
+}
+
+function mostrarMiniCarrito() {
+    const el = document.getElementById('miniCarrito');
+    if (!el) return;
+    renderizarMiniCarrito();
+    const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(el);
+    offcanvas.show();
+}
+
+function renderizarMiniCarrito() {
+    const contenedor = document.getElementById('miniCartItems');
+    const totalSpan = document.getElementById('miniCartTotal');
+    if (!contenedor) return;
+
+    cargarCarrito();
+
+    if (carrito.length === 0) {
+        contenedor.innerHTML = '<p class="text-muted text-center py-4">Tu carrito está vacío.</p>';
+        if (totalSpan) totalSpan.textContent = '$0';
+        return;
+    }
+
+    let html = '';
+    let total = 0;
+
+    carrito.forEach(item => {
+        const subtotal = item.precio * item.cantidad;
+        total += subtotal;
+        html += `
+            <div class="mini-cart-item">
+                <img src="${item.imagen}" alt="${item.nombre}" class="mini-cart-img" loading="lazy">
+                <div class="mini-cart-item-info">
+                    <div class="mini-nombre">${item.nombre}</div>
+                    <div class="mini-precio">$${item.precio.toLocaleString()}</div>
+                    <div class="d-flex align-items-center gap-1 mt-1">
+                        <button class="btn btn-qty btn-qty-mini" onclick="cambiarCantidad(${item.id}, -1)">−</button>
+                        <span class="fw-semibold qty-value-mini">${item.cantidad}</span>
+                        <button class="btn btn-qty btn-qty-mini" onclick="cambiarCantidad(${item.id}, 1)">+</button>
+                        <button class="btn btn-sm btn-outline-danger ms-2 px-2" onclick="eliminarProductoMini(${item.id})" style="font-size:0.75rem;">
+                            <i class="bi bi-trash3"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    contenedor.innerHTML = html;
+    if (totalSpan) totalSpan.textContent = `$${total.toLocaleString()}`;
+}
+
+function eliminarProductoMini(idProducto) {
+    eliminarProducto(idProducto);
+    renderizarMiniCarrito();
+}
