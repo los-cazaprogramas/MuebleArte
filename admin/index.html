@@ -28,10 +28,9 @@
             <header class="main-header">
                 <div class="welcome-text">
                     <h1>Bienvenido, Administrador</h1>
-                    <p>Estado actual de la tienda.</p>
                 </div>
                 <div class="header-actions">
-                    <a href="nuevo-mueble.html" class="btn-primary">
+                    <a href="nuevo-mueble.html" class="btn-primary" style="text-decoration: none; display: inline-block;">
                         <i class="fa-solid fa-plus"></i> Nuevo Mueble
                     </a>
                 </div>
@@ -56,7 +55,7 @@
                     <div class="metric-icon"><i class="fa-solid fa-eye"></i></div>
                     <div class="metric-info">
                         <h3>Visitas Hoy</h3>
-                        <p id="total-visitas" class="metric-value">0</p>
+                        <p id="total-visitas" class="metric-value">145</p>
                     </div>
                 </div>
             </section>
@@ -68,10 +67,11 @@
                 <table class="products-table">
                     <thead>
                         <tr>
-                            <th>Imagen</th>
+                            <th>Código</th>
                             <th>Nombre</th>
                             <th>Categoría</th>
                             <th>Precio</th>
+                            <th>Stock</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -82,6 +82,31 @@
 
         </main>
     </div>
+    <div id="editModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+    <div class="modal-content" style="background-color: #fff; padding: 25px; border-radius: 8px; width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative;">
+        <span class="close-modal" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #aaa;" onclick="cerrarModal()">&times;</span>
+        <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px;">Editar Mueble</h3>
+        
+        <form id="edit-form" style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+            <input type="hidden" id="edit-id">
 
+            <div>
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #555;">Nombre del Producto:</label>
+                <input type="text" id="edit-nombre" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div>
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #555;">Precio ($):</label>
+                <input type="number" id="edit-precio" step="0.01" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div>
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #555;">Stock (Piezas):</label>
+                <input type="number" id="edit-stock" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            
+            <button type="submit" style="background-color: #2ecc71; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 1em; margin-top: 10px;">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+    <script src="index.js"></script>
 </body>
 </html>

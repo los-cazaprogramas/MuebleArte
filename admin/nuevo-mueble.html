@@ -28,10 +28,10 @@
             <header class="main-header">
                 <div class="welcome-text">
                     <h1>Añadir Nuevo Mueble</h1>
-                    <p>Agrega las especificaciones del nuevo producto para el catálogo.</p>
+                    <p>Agrega las especificaciones del nuevo producto para guardarlo en la base de datos de MySQL.</p>
                 </div>
                 <div class="header-actions">
-                    <a href="index.html" class="btn-secondary">
+                    <a href="index.html" class="btn-secondary" style="text-decoration: none; display: inline-block;">
                         <i class="fa-solid fa-arrow-left"></i> Volver al Dashboard
                     </a>
                 </div>
@@ -47,13 +47,13 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="furniture-category">Categoría *</label>
+                            <label for="furniture-category">Categoría (Catálogo) *</label>
                             <select id="furniture-category" required>
                                 <option value="">Selecciona una categoría...</option>
-                                <option value="sillas">Sillas</option>
-                                <option value="mesas">Mesas</option>
-                                <option value="sillones">Sillones</option>
-                                <option value="recamaras">Recámaras</option>
+                                <option value="1">Sillas (ID: 1)</option>
+                                <option value="2">Mesas (ID: 2)</option>
+                                <option value="3">Sillones(ID: 3)</option>
+                                <option value="4">Librero(ID: 4)</option>
                             </select>
                         </div>
 
@@ -63,27 +63,38 @@
                         </div>
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="furniture-stock">Stock Inicial *</label>
+                            <input type="number" id="furniture-stock" min="0" value="10" required placeholder="Cantidad de piezas">
+                        </div>
+                        <div class="form-group">
+                            <label for="furniture-code">Código de Producto</label>
+                            <input type="text" id="furniture-code" placeholder="Ej. MUE-NUEVO">
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="furniture-description">Descripción Detallada *</label>
-                        <textarea id="furniture-description" rows="5" required placeholder="Especificaciones de materiales, dimensiones, colores disponibles..."></textarea>
+                        <textarea id="furniture-description" rows="4" required placeholder="Especificaciones de materiales, dimensiones..."></textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Imagen del Mueble *</label>
-                        <div class="image-upload-zone" id="upload-zone">
-                            <input type="file" id="image-input" accept="image/*" required>
+                        <div class="image-upload-zone" id="upload-zone" style="cursor: pointer;">
+                            <input type="file" id="image-input" accept="image/*" required style="display: none;">
                             <div class="upload-placeholder" id="upload-placeholder">
                                 <i class="fa-solid fa-cloud-arrow-up"></i>
                                 <p>Haz clic para seleccionar o arrastra la imagen aquí</p>
                                 <span>Formatos admitidos: JPG, PNG (Max. 5MB)</span>
                             </div>
-                            <img id="image-preview" class="preview-img" alt="Vista previa del mueble">
+                            <img id="image-preview" class="preview-img" alt="Vista previa del mueble" style="display: none; max-width: 100%; height: auto; border-radius: 4px;">
                         </div>
                     </div>
 
                     <div class="form-actions">
                         <button type="submit" class="btn-submit">
-                            <i class="fa-solid fa-save"></i> Registrar Mueble en Catálogo
+                            <i class="fa-solid fa-save"></i> Registrar Mueble en Base de Datos
                         </button>
                     </div>
 
@@ -93,33 +104,6 @@
         </main>
     </div>
 
-    <script>
-        const imageInput = document.getElementById('image-input');
-        const uploadZone = document.getElementById('upload-zone');
-        const uploadPlaceholder = document.getElementById('upload-placeholder');
-        const imagePreview = document.getElementById('image-preview');
-        const furnitureForm = document.getElementById('furniture-form');
-        uploadZone.addEventListener('click', () => {
-            imageInput.click();
-        });
-        imageInput.addEventListener('change', function() {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                
-                reader.addEventListener('load', function() {
-                    uploadPlaceholder.style.display = 'none';
-                    imagePreview.src = this.result;
-                    imagePreview.style.display = 'block';
-                });
-                
-                reader.readAsDataURL(file);
-            }
-        });
-        furnitureForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log("Formulario listo para enviar datos.");
-        });
-    </script>
+    <script src="mock-api.js"></script>
 </body>
 </html>
