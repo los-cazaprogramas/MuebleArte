@@ -230,3 +230,19 @@ body {
     color: #e53935;
 }
 .btn-action.delete:hover { background-color: #fdd8d6; }
+.slide {
+    opacity: 0;
+    visibility: hidden; 
+    position: absolute;  
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative; 
+}
