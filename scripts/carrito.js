@@ -236,3 +236,35 @@ function eliminarProductoMini(idProducto) {
     eliminarProducto(idProducto);
     renderizarMiniCarrito();
 }
+function mostrarToast(mensaje) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    // Crear la estructura HTML del Toast de Bootstrap 5
+    const toastHtml = `
+        <div class="toast align-items-center text-white bg-dark border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: 250px;">
+            <div class="d-flex">
+                <div class="toast-body d-flex align-items-center gap-2">
+                    <i class="bi bi-check-circle-fill text-warning fs-5"></i>
+                    <span>${mensaje}</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    `;
+
+    // Insertar en el contenedor
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = toastHtml.trim();
+    const toastElement = tempDiv.firstChild;
+    container.appendChild(toastElement);
+
+    // Inicializar y mostrar con Bootstrap
+    const bsToast = new bootstrap.Toast(toastElement, { delay: 3000 });
+    bsToast.show();
+
+    // Eliminar del DOM después de ocultarse para no saturar la página
+    toastElement.addEventListener('hidden.bs.toast', () => {
+        toastElement.remove();
+    });
+}
