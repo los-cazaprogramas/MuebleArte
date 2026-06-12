@@ -28,7 +28,7 @@ async function cargarDetalleProducto(id) {
         
         productoActual = await respuesta.json();
 
-        // Inyectar datos en el HTML de forma segura
+        // Inyectar datos en tu estructura real de HTML de forma segura
         if (document.getElementById("det-nombre")) {
             document.getElementById("det-nombre").textContent = productoActual.nombreProducto;
         }
@@ -36,10 +36,10 @@ async function cargarDetalleProducto(id) {
             document.getElementById("det-precio").textContent = `$${productoActual.precio.toLocaleString('es-MX')}.00 MXN`;
         }
         if (document.getElementById("det-descripcion")) {
-            document.getElementById("det-descripcion").textContent = productoActual.descripcionProducto;
+            document.getElementById("det-descripcion").textContent = productoActual.descripcionProducto || "Sin descripción disponible.";
         }
         if (document.getElementById("det-codigo")) {
-            document.getElementById("det-codigo").textContent = productoActual.codigoProducto;
+            document.getElementById("det-codigo").textContent = productoActual.codigoProducto || `MUE-${productoActual.idProducto}`;
         }
         if (document.getElementById("det-breadcrumb-categoria")) {
             document.getElementById("det-breadcrumb-categoria").textContent = productoActual.categoria?.nombreCategoria || "Mueble";
@@ -66,31 +66,23 @@ async function cargarDetalleProducto(id) {
                 const urlImg = productoActual.imagenUrl.trim();
                 
                 if (urlImg.startsWith('http://') || urlImg.startsWith('https://')) {
-                    // Caso 1: La URL ya viene completa desde el backend (ej. un servidor externo o Cloudinary)
                     rutaFinal = urlImg;
-                } else if (urlImg.startsWith('/assets/') || urlImg.startsWith('assets/')) {
-                    // Caso 2: Es una imagen local del Frontend. 
-                    // Si empieza con 'assets', le aseguramos el slash inicial para que busque desde la raíz del proyecto.
-                    rutaFinal = urlImg.startsWith('/') ? urlImg : `/${urlImg}`;
                 } else {
-                    // Caso 3: Es una ruta relativa del backend de Spring Boot (ej. /uploads/mueble.jpg)
-                    // Le concatenamos el puerto de tu servidor de Java.
+                    // Mapeo directo para tus imágenes guardadas localmente en Spring Boot
                     rutaFinal = urlImg.startsWith('/') ? `http://localhost:8080${urlImg}` : `http://localhost:8080/${urlImg}`;
                 }
             } else {
-                // Caso 4: Por si la base de datos devuelve null o vacío, ponemos una de stock elegante
-                rutaFinal = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop"; 
+                rutaFinal = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800"; 
             }
 
-            // Inyectar la ruta al atributo src del HTML
             imagenElement.src = rutaFinal;
 
-            // Guardar un respaldo en caso de que la imagen de Spring Boot de un error 404 (No encontrada)
+            // Respaldo por si la imagen física no se encuentra (Error 404)
             imagenElement.onerror = function() {
-                console.warn(`⚠️ No se pudo cargar la imagen en: ${rutaFinal}. Usando respaldo elegante.`);
-                this.src = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800&auto=format&fit=crop";
+                this.src = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800";
             };
         }
+
         // Cargar sugerencias relacionadas
         if (productoActual.categoria?.idCategoria) {
             cargarProductosRelacionados(productoActual.categoria.idCategoria, productoActual.idProducto);
@@ -115,20 +107,27 @@ async function cargarProductosRelacionados(idCategoria, idProductoActual) {
         contenedor.innerHTML = "";
 
         if (filtrados.length === 0) {
-            contenedor.innerHTML = `<p class="text-muted">No hay más productos disponibles en esta categoría por el momento.</p>`;
+            contenedor.innerHTML = `<p class="text-muted small px-3">No hay más productos disponibles en esta categoría por el momento.</p>`;
             return;
         }
 
         filtrados.forEach(p => {
-            const imgRuta = p.imagenUrl ? (p.imagenUrl.startsWith('http') ? p.imagenUrl : `http://localhost:8080${p.imagenUrl}`) : "https://placehold.co/300x200?text=Mueble";
+            let imgRuta = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800";
+            if (p.imagenUrl && p.imagenUrl.trim() !== "") {
+                const u = p.imagenUrl.trim();
+                imgRuta = u.startsWith('http') ? u : `http://localhost:8080${u.startsWith('/') ? '' : '/'}${u}`;
+            }
+
             contenedor.innerHTML += `
                 <div class="col">
                     <div class="card h-100 border-0 shadow-sm">
                         <img src="${imgRuta}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="${p.nombreProducto}">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">${p.nombreProducto}</h5>
-                            <p class="text-danger fw-semibold">$${p.precio.toLocaleString('es-MX')}.00</p>
-                            <a href="/pages/detalle-producto.html?id=${p.idProducto}" class="btn btn-outline-dark btn-sm w-100">Ver detalles</a>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold" style="font-size: 1rem;">${p.nombreProducto}</h5>
+                                <p class="text-danger fw-semibold">$${p.precio.toLocaleString('es-MX')}.00</p>
+                            </div>
+                            <a href="/pages/detalle-producto.html?id=${p.idProducto}" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Ver detalles</a>
                         </div>
                     </div>
                 </div>
@@ -139,7 +138,7 @@ async function cargarProductosRelacionados(idCategoria, idProductoActual) {
     }
 }
 
-// Configurar el click del botón
+// Configurar el click del botón de agregar al carrito
 function configurarEventoBotonCarrito() {
     const btnAgregar = document.getElementById('btn-agregar-det');
     if (btnAgregar) {
@@ -151,31 +150,28 @@ function configurarEventoBotonCarrito() {
     }
 }
 
-// Lógica de acoplamiento que invoca a tu carrito.js original
+// Embalaje del producto para mandarlo al carrito.js original
 function agregarAlCarritoDesdeDetalle() {
     const parametrosUrl = new URLSearchParams(window.location.search);
     const idDesdeUrl = parametrosUrl.get("id");
 
-    // Capturar cantidad seleccionada del DOM
     const selectCantidad = document.getElementById('det-cantidad');
     const cantidadSeleccionada = selectCantidad ? parseInt(selectCantidad.value, 10) : 1;
 
-    // Rescate de respaldos desde el HTML
     const nombreHtml = document.getElementById("det-nombre")?.textContent || "Mueble";
     const precioTexto = document.getElementById("det-precio")?.textContent || "$0";
     const precioHtml = parseInt(precioTexto.replace(/[^0-9]/g, '')) || 0;
     const imagenHtml = document.getElementById("det-imagen")?.src || "";
     const descripcionHtml = document.getElementById("det-descripcion")?.textContent || "";
 
-    // ID definitivo mapeado a entero
-    const idReal = parseInt(productoActual?.idProducto || productoActual?.id || idDesdeUrl, 10);
+    const idReal = parseInt(productoActual?.idProducto || idDesdeUrl, 10);
 
     if (!idReal) {
         mostrarToastEstetico("❌ Error: No se pudo validar el identificador del mueble.", "error");
         return;
     }
 
-    // 📦 CONSTRUCCIÓN DEL OBJETO EXACTO QUE TU 'carrito.js' NECESITA
+    // Estructura limpia que espera recibir agregarProducto() de tu carrito.js
     const productoParaCarrito = {
         id: idReal,
         nombre: productoActual?.nombreProducto || nombreHtml,
@@ -187,60 +183,42 @@ function agregarAlCarritoDesdeDetalle() {
         link: window.location.pathname + window.location.search
     };
 
-    // ⚡ Llama a la función global de tu 'carrito.js' tantas veces como unidades pida el selector
+    // Invocar tu función de agregarProducto declarada en scripts/carrito.js
     if (typeof agregarProducto === 'function') {
         for (let i = 0; i < cantidadSeleccionada; i++) {
             agregarProducto(productoParaCarrito);
         }
         
-        // Si tienes la vista del mini carrito (Offcanvas) importada, la refrescamos también
         if (typeof renderMiniCarrito === 'function') {
             renderMiniCarrito();
         }
+        mostrarToastEstetico(`¡${productoParaCarrito.nombre} añadido al carrito con éxito! 🎉`, "success");
     } else {
         console.error("❌ No se encontró la función 'agregarProducto' de carrito.js");
+        mostrarToastEstetico("❌ Error: No se pudo conectar con el sistema de almacenamiento del carrito.", "error");
     }
-
-    // 🔥 Lanzar Toast Premium de Éxito
-    mostrarToastEstetico(`¡${productoParaCarrito.nombre} añadido al carrito con éxito! 🎉`, "success");
 }
 
-// FUNCIÓN MAESTRA: NOTIFICACIÓN FLOTANTE INTEGRADA (TOAST PREMIUM)
 function mostrarToastEstetico(mensaje, tipo = "success") {
     const contenedor = document.getElementById("toast-container");
     if (!contenedor) return;
 
     const toast = document.createElement("div");
-    
     toast.style.background = tipo === "success" ? "#b58d3d" : "#c0392b";
     toast.style.color = "#ffffff";
     toast.style.padding = "14px 24px";
     toast.style.marginBottom = "10px";
     toast.style.borderRadius = "30px"; 
     toast.style.fontWeight = "500";
-    toast.style.fontSize = "0.95rem";
-    toast.style.fontFamily = "'Segoe UI', Roboto, sans-serif";
     toast.style.boxShadow = "0 8px 24px rgba(0,0,0,0.12)";
-    toast.style.opacity = "0";
-    toast.style.transform = "translateY(-30px) scale(0.9)";
-    toast.style.transition = "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
     toast.style.display = "flex";
     toast.style.alignItems = "center";
-    toast.style.gap = "8px";
-    
     toast.textContent = mensaje;
+
     contenedor.appendChild(toast);
 
     setTimeout(() => {
-        toast.style.opacity = "1";
-        toast.style.transform = "translateY(0) scale(1)";
-    }, 40);
-
-    setTimeout(() => {
         toast.style.opacity = "0";
-        toast.style.transform = "translateY(-20px) scale(0.9)";
-        setTimeout(() => {
-            toast.remove();
-        }, 400);
+        setTimeout(() => toast.remove(), 400);
     }, 3500);
 }
