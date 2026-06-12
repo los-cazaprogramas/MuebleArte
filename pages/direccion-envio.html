@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dirección de envío - MuebleArte</title>
+    <link rel="icon" type="image/png" href="/assets/pestañaimg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="../styles/header-footer.css" rel="stylesheet">
+    <link href="../styles/checkout.css" rel="stylesheet">
+</head>
+<body class="pagina-pasarela">
+
+<header class="header-mueble-arte">
+  <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
+    <div class="logo-wrapper">
+      <a href="/index.html">
+        <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+      </a>
+    </div>
+    <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
+      <i class="bi bi-list fs-1 text-dark"></i>
+    </button>
+    <div class="contenedor-menu d-flex align-items-center" id="menuPrincipal">
+      <ul class="nav align-items-center gap-3 mx-lg-3">
+        <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
+        <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categorías</a>
+          <ul class="dropdown-menu shadow-sm border-0">
+            <li><a class="dropdown-item" href="/pages/libreros.html">Libreros</a></li>
+            <li><a class="dropdown-item" href="/pages/sillas.html">Sillas</a></li>
+            <li><a class="dropdown-item" href="/pages/mesas.html">Mesas</a></li>
+            <li><a class="dropdown-item" href="/pages/base-cama.html">Bases para cama</a></li>
+            <li><a class="dropdown-item" href="/pages/cajoneras.html">Cajoneras</a></li>
+          </ul>
+        </li>
+        <li><a href="/pages/preguntas-frecuentes.html" class="nav-link-custom">Preguntas frecuentes</a></li>
+      </ul>
+      <div class="acciones-usuario d-flex align-items-center gap-2 ms-lg-3">
+        <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
+          <i class="bi bi-cart3"></i> Carrito
+        </a>
+        <div id="botonesAuth" class="d-flex gap-2">
+          <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">Iniciar Sesión</a>
+          <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">Registrarse</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="fondo-oscuro-menu d-lg-none" id="fondoMenu"></div>
+</header>
+
+<main class="container my-5">
+    <div class="checkout-progress mb-5">
+        <div class="step active"><div class="step-circle">1</div><span>Dirección</span></div>
+        <div class="step"><div class="step-circle">2</div><span>Pago</span></div>
+        <div class="step"><div class="step-circle">3</div><span>Confirmación</span></div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="checkout-card">
+                <h1 class="h3 fw-bold mb-4"><i class="bi bi-geo-alt-fill me-2" style="color: var(--dorado-acento);"></i>Dirección de envío</h1>
+                <form id="formDireccion" onsubmit="return false;">
+                    <div class="mb-3"><label class="form-label">Nombre completo *</label><input type="text" class="form-control" id="nombreCompleto" placeholder="Ej. Juan Pérez" required></div>
+                    <div class="mb-3"><label class="form-label">Dirección *</label><input type="text" class="form-control" id="direccion" placeholder="Calle, número, colonia" required></div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-7"><label class="form-label">Ciudad *</label><input type="text" class="form-control" id="ciudad" placeholder="Ej. Monterrey" required></div>
+                        <div class="col-md-5"><label class="form-label">Código postal *</label><input type="text" class="form-control" id="codigoPostal" placeholder="5 dígitos" required></div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6"><label class="form-label">Estado *</label><input type="text" class="form-control" id="estado" placeholder="Ej. Nuevo León" required></div>
+                        <div class="col-md-6"><label class="form-label">País *</label><select class="form-select" id="pais" required><option value="">Seleccionar</option><option>México</option><option>Colombia</option><option>Argentina</option><option>Chile</option><option>Perú</option><option>España</option></select></div>
+                    </div>
+                    <div class="mb-3"><label class="form-label">Teléfono *</label><input type="tel" class="form-control" id="telefono" placeholder="10 dígitos" required></div>
+                    <div class="mb-4"><label class="form-label">Instrucciones adicionales</label><textarea class="form-control" id="instrucciones" rows="2" placeholder="Indicaciones para la entrega..."></textarea></div>
+                    
+                    <div class="d-flex justify-content-between gap-3">
+                        <a href="/pages/carrito.html" class="btn btn-outline-dark btn-capsule px-4">Volver</a>
+                        <a href="./forma-pago.html" class="btn btn-gold btn-capsule px-4 d-inline-flex align-items-center justify-content-center">Continuar →</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="container-fluid mt-5 p-0 bg-marino">
+    <div class="container" id="piepagina">
+        <footer class="pt-5 pb-3">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Secciones</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/index.html" class="nav-link p-0">Inicio</a></li>
+                        <li class="nav-item mb-2"><a href="/pages/carrito.html" class="nav-link p-0">Carrito</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Atención al cliente</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/pages/contacto.html" class="nav-link p-0">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form><h5>Suscríbete</h5><p>¡No te pierdas de nada!</p><div class="d-flex flex-column flex-sm-row w-100 gap-2"><input id="newsletter1" type="email" class="form-control" placeholder="Correo electrónico"><button class="btn btn-dorado" type="button">Suscribirse</button></div></form>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 border-top border-secondary">
+                <p class="mb-0">© 2026 MuebleArte, Inc. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
