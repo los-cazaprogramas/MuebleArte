@@ -1,10 +1,12 @@
-
+/* =========================================
+   VARIABLES GLOBALES
+   ========================================= */
 :root {
     /* Colores principales */
     --texto-principal: #1d1d1f;
     --texto-secundario: #86868b;
     --color-dorado: #A67C00;
-    --dorado-acento: #A67C00;      /* Alias para consistencia */
+    --dorado-acento: #A67C00;
     --color-dorado-light: #D4AF37;
     --marino-primario: #1a2530;
     --negro-obsidiana: #1a1a1a;
@@ -34,7 +36,7 @@ body {
 }
 
 /* =========================================
-   HEADER (HEATHER)
+   HEADER
    ========================================= */
 .header-mueble-arte {
     font-family: var(--inter-font);
@@ -113,19 +115,224 @@ body {
     display: inline-block;
 }
 
+.btn-outline-dark {
+    border: 1px solid var(--marino-primario);
+    color: var(--marino-primario);
+    background: transparent;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--marino-primario);
+    color: white;
+}
+
 /* Transiciones generales */
 .btn-capsule,
 .btn-capsule i {
     transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* Responsive header */
-@media (max-width: 1200px) {
-    .nav-link-custom {
-        font-size: 0.8rem;
+/* Dropdown en escritorio */
+.dropdown-menu {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(166, 124, 0, 0.1);
+    color: var(--dorado-acento);
+}
+
+/* Botón hamburguesa */
+.menu-hamburguesa {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s var(--smooth-curve);
+    z-index: 1001;
+}
+
+.menu-hamburguesa:active {
+    transform: scale(0.9);
+}
+
+/* Fondo oscuro para menú móvil */
+.fondo-oscuro-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.fondo-oscuro-menu.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================================
+   RESPONSIVE: MÓVILES Y TABLETS (max 991px)
+   ========================================= */
+@media (max-width: 991px) {
+    /* Panel lateral del menú */
+    .contenedor-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 85%;
+        max-width: 380px;
+        height: 100vh;
+        background-color: var(--blanco-puro);
+        flex-direction: column;
+        align-items: flex-start !important;
+        padding: 80px 20px 30px 20px;
+        transition: left 0.4s var(--smooth-curve);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        overflow-y: auto;
     }
-    .btn-capsule {
-        padding: 0.4rem 0.8rem;
+
+    .contenedor-menu.activo {
+        left: 0 !important;
+    }
+
+    /* Navegación vertical */
+    .contenedor-menu .nav {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px !important;
+        margin-bottom: 30px;
+        padding: 0;
+    }
+
+    .contenedor-menu .nav li {
+        width: 100%;
+    }
+
+    .contenedor-menu .nav-link-custom {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        background-color: var(--gris-perla);
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--marino-primario);
+        white-space: normal;
+        transition: background-color 0.3s ease;
+    }
+
+    .contenedor-menu .nav-link-custom:active {
+        background-color: #e5e5e7;
+    }
+
+    /* Dropdown en móvil (estático, no flotante) */
+    .contenedor-menu .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 10px 0 0 20px;
+        margin: 0;
+    }
+
+    .contenedor-menu .dropdown-item {
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 500;
+        color: var(--texto-secundario);
+        margin-bottom: 4px;
+    }
+
+    .contenedor-menu .dropdown-item:hover,
+    .contenedor-menu .dropdown-item:active {
+        background-color: rgba(166, 124, 0, 0.1);
+        color: var(--dorado-acento);
+    }
+
+    /* Buscador 100% ancho */
+    .contenedor-menu .search-container {
+        width: 100%;
+        max-width: none;
+        margin-bottom: 20px;
+    }
+
+    /* Acciones de usuario en móvil */
+    .contenedor-menu .acciones-usuario {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch !important;
+        gap: 15px !important;
+        margin-top: 10px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e5e7;
+    }
+
+    /* Botones de acción en móvil - ancho completo */
+    .contenedor-menu .acciones-usuario .btn-capsule,
+    .contenedor-menu .acciones-usuario .dropdown {
+        width: 100%;
+    }
+
+    .contenedor-menu .acciones-usuario .btn-capsule {
+        padding: 14px;
+        font-size: 1.05rem;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Usuario logueado en móvil (mismo ancho que los botones) */
+    .contenedor-menu #usuarioLogueado {
+        width: 100%;
+    }
+
+    .contenedor-menu #usuarioLogueado .btn-capsule {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .contenedor-menu #usuarioLogueado .dropdown-menu {
+        position: relative !important;
+        width: 100%;
+        margin-top: 0.5rem;
+        background-color: var(--gris-perla);
+        border-radius: 12px;
+        padding: 0.5rem 0;
+    }
+
+    .contenedor-menu #usuarioLogueado .dropdown-item {
+        padding: 12px 20px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE: ESCRITORIO (min 992px)
+   ========================================= */
+@media (min-width: 992px) {
+    /* Asegurar que el menú siempre sea visible en desktop */
+    .contenedor-menu {
+        display: flex !important;
     }
 }
 
@@ -146,7 +353,6 @@ body {
     margin: 0 auto;
 }
 
-/* Misión, Visión y Valores */
 .card-mvv {
     background-color: var(--blanco-puro);
     border-radius: 16px;
@@ -250,7 +456,6 @@ body {
     border-radius: 25px 25px 0 0;
 }
 
-/* Controles de navegación */
 .carousel-control-prev,
 .carousel-control-next {
     position: absolute;
@@ -348,7 +553,7 @@ body {
 }
 
 /* Enlaces del footer */
-body #piepagina .nav-link {
+#piepagina .nav-link {
     color: var(--blanco-puro);
     transition: all 0.3s ease;
     padding-left: 0;
@@ -356,7 +561,7 @@ body #piepagina .nav-link {
     font-size: 0.95rem;
 }
 
-body #piepagina .nav-link:hover {
+#piepagina .nav-link:hover {
     color: var(--dorado-acento);
     text-decoration: none;
     transform: translateX(5px);
@@ -409,7 +614,7 @@ body #piepagina .nav-link:hover {
 }
 
 /* =========================================
-   MEDIA QUERIES RESPONSIVAS (GENERALES)
+   RESPONSIVE GENERAL (max 768px)
    ========================================= */
 @media (max-width: 768px) {
     .hero-acerca-contenido h1 {
@@ -427,204 +632,5 @@ body #piepagina .nav-link:hover {
     
     .carousel-control-next {
         right: -5px;
-    }
-}
-
-/* Estilos base del botón hamburguesa */
-.menu-hamburguesa {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s var(--smooth-curve);
-}
-
-.menu-hamburguesa:active {
-    transform: scale(0.9);
-}
-
-/* =========================================
-   MEDIA QUERY PARA MÓVILES Y TABLETS (Max 991px)
-   ========================================= */
-@media (max-width: 991px) {
-    /* El contenedor se convierte en un panel lateral */
-    .contenedor-menu {
-        position: fixed;
-        top: 76px; /* Ajusta esto si tu header es más alto o más bajo */
-        left: -100%; /* Oculto fuera de la pantalla por la izquierda */
-        width: 100%;
-        height: calc(100vh - 76px);
-        background-color: var(--blanco-puro);
-        flex-direction: column; /* Apila todo hacia abajo */
-        align-items: flex-start !important; /* Alinea a la izquierda */
-        padding: 30px 20px;
-        transition: left 0.4s var(--smooth-curve);
-        box-shadow: 2px 10px 15px rgba(0,0,0,0.1);
-        z-index: 999;
-        overflow-y: auto; /* Permite hacer scroll si hay muchos enlaces */
-    }
-
-    /* Esta clase la agregaremos con JavaScript para deslizar el menú */
-    .contenedor-menu.activo {
-        left: 0;
-    }
-
-    /* Convertimos la lista horizontal en vertical */
-    .contenedor-menu .nav {
-        flex-direction: column;
-        align-items: flex-start !important;
-        width: 100%;
-        gap: 20px !important;
-        margin-bottom: 20px;
-    }
-
-    /* Hacemos que la barra de búsqueda ocupe el 100% del ancho */
-    .contenedor-menu .search-container {
-        width: 100%;
-        max-width: none;
-    }
-
-    /* Convertimos los botones de usuario en bloques al 100% de ancho */
-    .contenedor-menu .acciones-usuario {
-        flex-direction: column;
-        width: 100%;
-        align-items: stretch !important;
-        gap: 15px !important;
-    }
-}
-
-/* =========================================
-   MEDIA QUERY PARA ESCRITORIO (Min 992px)
-   ========================================= */
-/* =========================================
-   MENÚ MÓVIL Y TABLET (DISEÑO PREMIUM)
-   ========================================= */
-
-/* 1. Fondo oscuro desenfocado */
-.fondo-oscuro-menu {
-    position: fixed;
-    top: 76px; /* Altura de tu header */
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - 76px);
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 998;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.fondo-oscuro-menu.activo {
-    opacity: 1;
-    visibility: visible;
-}
-
-@media (max-width: 991px) {
-    /* 2. El panel lateral con ancho controlado */
-    .contenedor-menu {
-        position: fixed;
-        top: 76px;
-        left: -100%;
-        width: 85%; /* Ocupa 85% en celulares pequeños */
-        max-width: 380px; /* CRUCIAL PARA IPAD: No crecerá más de esto */
-        height: calc(100vh - 76px);
-        background-color: var(--blanco-puro);
-        flex-direction: column;
-        align-items: flex-start !important;
-        padding: 30px 20px;
-        transition: left 0.4s var(--smooth-curve);
-        box-shadow: 10px 0 30px rgba(0,0,0,0.15); /* Sombra elegante */
-        z-index: 999;
-        overflow-y: auto;
-    }
-
-    .contenedor-menu.activo {
-        left: 0 !important;
-    }
-
-    /* 3. Marcando los enlaces como botones grandes */
-/* ========================================================
-       REEMPLAZA ESTO DENTRO DE TU @media (max-width: 991px)
-       ======================================================== */
-
-    /* 1. Forzamos a la lista y a los 'li' a ocupar todo el ancho disponible */
-    .contenedor-menu .nav {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px !important;
-        margin-bottom: 30px;
-        padding: 0;
-    }
-
-    .contenedor-menu .nav li {
-        width: 100%; /* ESTO ES LA CLAVE PARA QUE EL BOTÓN SE ESTIRE */
-    }
-
-    /* 2. Estilo del botón (enlace) para que se vea como una tarjeta tocable */
-    .contenedor-menu .nav-link-custom {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 20px; /* Más alto para que el dedo lo toque fácil */
-        background-color: var(--gris-perla);
-        border-radius: 12px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--marino-primario);
-        transition: background-color 0.3s ease;
-    }
-
-    .contenedor-menu .nav-link-custom:active {
-        background-color: #e5e5e7; /* Feedback visual al tocar */
-    }
-
-    /* 3. Arreglamos el submenú de Categorías para que no flote por encima de los otros botones */
-    .contenedor-menu .dropdown-menu {
-        position: static !important; /* Quita el comportamiento flotante de Bootstrap */
-        transform: none !important;
-        width: 100%;
-        background-color: transparent;
-        border: none;
-        box-shadow: none !important;
-        padding: 10px 0 0 20px; /* Sangría para que se note que es un submenú */
-    }
-
-    .contenedor-menu .dropdown-item {
-        padding: 12px 20px;
-        border-radius: 8px;
-        font-weight: 500;
-        color: var(--texto-secundario);
-        margin-bottom: 4px;
-    }
-
-    .contenedor-menu .dropdown-item:hover,
-    .contenedor-menu .dropdown-item:active {
-        background-color: rgba(166, 124, 0, 0.1); /* Un fondo dorado muy suave */
-        color: var(--dorado-acento);
-    }
-
-    /* Barra de Búsqueda 100% de su contenedor */
-    .contenedor-menu .search-container {
-        width: 100%;
-        max-width: none;
-    }
-
-    /* 4. Botones de acción inferiores robustos */
-    .contenedor-menu .acciones-usuario {
-        flex-direction: column;
-        width: 100%;
-        align-items: stretch !important;
-        gap: 15px !important;
-        margin-top: 10px;
-        padding-top: 20px;
-        border-top: 1px solid #e5e5e7;
-    }
-
-    .contenedor-menu .btn-capsule {
-        padding: 14px; /* Botones más altos */
-        font-size: 1.05rem;
-        justify-content: center; /* Ícono y texto centrados */
     }
 }

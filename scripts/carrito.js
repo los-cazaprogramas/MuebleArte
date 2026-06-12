@@ -1,5 +1,5 @@
 // =========================================
-//  CARRITO CON JSON Y LOCALSTORAGE (SIN PRODUCTOS DESTACADOS)
+//  CARRITO CON JSON Y LOCALSTORAGE
 // =========================================
 
 // Variable global del carrito
@@ -20,18 +20,7 @@ function cargarCarrito() {
 }
 
 // ---------- FUNCIONES PARA MODIFICAR EL CARRITO ----------
-// Esta función se debe llamar desde otras páginas (catálogo, producto) pasando un objeto producto completo.
-// Ejemplo de uso:
-//   agregarProducto({
-//       id: 1,
-//       nombre: "Librero de roble",
-//       precio: 189900,
-//       imagen: "ruta.jpg",
-//       descripcion: "Breve descripción",
-//       link: "/producto/librero.html"
-//   });
 function agregarProducto(producto) {
-    // Validar que el producto tenga los campos necesarios
     if (!producto.id || !producto.nombre || !producto.precio) return;
 
     const existe = carrito.find(item => item.id === producto.id);
@@ -49,7 +38,7 @@ function agregarProducto(producto) {
         });
     }
     guardarCarrito();
-    renderizarCarrito();   // actualizar vista si estamos en la página del carrito
+    renderizarCarrito();
 }
 
 function eliminarProducto(idProducto) {
@@ -67,13 +56,15 @@ function cambiarCantidad(id, delta) {
     }
     guardarCarrito();
     renderizarCarrito();
-    renderizarMiniCarrito();
 }
 
 function vaciarCarrito() {
-    carrito = [];
-    guardarCarrito();
-    renderizarCarrito();
+    if (carrito.length === 0) return;
+    if (confirm('¿Estás seguro de que quieres vaciar todo el carrito?')) {
+        carrito = [];
+        guardarCarrito();
+        renderizarCarrito();
+    }
 }
 
 // ---------- RENDERIZADO DEL CARRITO ----------
@@ -102,15 +93,15 @@ function renderizarCarrito() {
             <div class="cart-item" data-id="${item.id}">
                 <div class="row align-items-center g-3">
                     <div class="col-md-3 col-4">
-                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-product-img w-100">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-product-img w-100" loading="lazy">
                     </div>
                     <div class="col-md-5 col-8">
-                        <h3 class="product-title">${item.nombre}</h3>
-                        <p class="product-description">${item.descripcion}</p>
+                        <h3 class="product-title">${escapeHtml(item.nombre)}</h3>
+                        <p class="product-description">${escapeHtml(item.descripcion)}</p>
                         <div class="d-flex align-items-center gap-2 mt-2">
-                            <button class="btn btn-qty btn-qty-minus" onclick="cambiarCantidad(${item.id}, -1)">−</button>
+                            <button class="btn btn-qty btn-qty-minus" data-id="${item.id}" data-delta="-1">−</button>
                             <span class="fw-semibold qty-value">${item.cantidad}</span>
-                            <button class="btn btn-qty btn-qty-plus" onclick="cambiarCantidad(${item.id}, 1)">+</button>
+                            <button class="btn btn-qty btn-qty-plus" data-id="${item.id}" data-delta="1">+</button>
                         </div>
                         <div class="d-flex flex-wrap gap-2 mt-2">
                             <a href="${item.link}" class="btn btn-sm btn-outline-view btn-capsule">
@@ -123,6 +114,7 @@ function renderizarCarrito() {
                     </div>
                     <div class="col-md-4 col-12 text-md-end">
                         <span class="product-price">$${item.precio.toLocaleString()}</span>
+                        <div class="product-subtotal small text-muted">Subtotal: $${totalItem.toLocaleString()}</div>
                     </div>
                 </div>
             </div>
@@ -136,13 +128,39 @@ function renderizarCarrito() {
     if (subtotalSpan) subtotalSpan.innerText = `$${subtotal.toLocaleString()}`;
     if (totalSpan) totalSpan.innerText = `$${total.toLocaleString()}`;
 
+    // Asignar eventos a los botones de cantidad
+    document.querySelectorAll(".btn-qty-minus, .btn-qty-plus").forEach(btn => {
+        btn.removeEventListener('click', handleCantidadClick);
+        btn.addEventListener('click', handleCantidadClick);
+    });
+
     // Asignar eventos a los botones "Eliminar"
     document.querySelectorAll(".eliminar-item").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            const id = parseInt(btn.getAttribute("data-id"));
-            eliminarProducto(id);
-        });
+        btn.removeEventListener('click', handleEliminarClick);
+        btn.addEventListener('click', handleEliminarClick);
     });
+}
+
+// Manejadores de eventos
+function handleCantidadClick(e) {
+    const btn = e.currentTarget;
+    const id = parseInt(btn.getAttribute("data-id"));
+    const delta = parseInt(btn.getAttribute("data-delta"));
+    cambiarCantidad(id, delta);
+}
+
+function handleEliminarClick(e) {
+    const btn = e.currentTarget;
+    const id = parseInt(btn.getAttribute("data-id"));
+    eliminarProducto(id);
+}
+
+// Función de seguridad para evitar XSS
+function escapeHtml(texto) {
+    if (!texto) return '';
+    const div = document.createElement('div');
+    div.textContent = texto;
+    return div.innerHTML;
 }
 
 // ---------- INICIALIZACIÓN ----------
@@ -153,86 +171,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Botón vaciar carrito
     const vaciarBtn = document.getElementById("vaciarCarritoBtn");
     if (vaciarBtn) {
-        vaciarBtn.addEventListener("click", vaciarCarrito);
+        vaciarBtn.removeEventListener('click', vaciarCarrito);
+        vaciarBtn.addEventListener('click', vaciarCarrito);
     }
 
-    // Botón proceder al pago
-        const pagoBtn = document.getElementById("procederPagoBtn");
+    // Botón proceder al pago - REDIRIGE A LA PASARELA (direccion-envio.html)
+    const pagoBtn = document.getElementById("procederPagoBtn");
     if (pagoBtn) {
-        pagoBtn.addEventListener("click", () => {
-            alert("Funcionalidad de pago en construcción. El carrito se ha guardado.");
-        });
+        pagoBtn.removeEventListener('click', irAPasarela);
+        pagoBtn.addEventListener('click', irAPasarela);
     }
 });
 
-// ---------- MINI CARRITO (OFFCANVAS) ----------
-function agregarProductoDesdeCard(boton) {
-    const card = boton.closest('.product-card');
-    if (!card) return;
-    const producto = {
-        id: parseInt(card.dataset.id),
-        nombre: card.dataset.nombre,
-        precio: parseInt(card.dataset.precio),
-        imagen: card.dataset.imagen,
-        descripcion: card.dataset.descripcion || "",
-        link: "#"
-    };
-    agregarProducto(producto);
-    renderizarMiniCarrito();
-    mostrarMiniCarrito();
-}
-
-function mostrarMiniCarrito() {
-    const el = document.getElementById('miniCarrito');
-    if (!el) return;
-    renderizarMiniCarrito();
-    const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(el);
-    offcanvas.show();
-}
-
-function renderizarMiniCarrito() {
-    const contenedor = document.getElementById('miniCartItems');
-    const totalSpan = document.getElementById('miniCartTotal');
-    if (!contenedor) return;
-
-    cargarCarrito();
-
+// ---------- REDIRIGIR A PASARELA DE PAGO ----------
+function irAPasarela() {
     if (carrito.length === 0) {
-        contenedor.innerHTML = '<p class="text-muted text-center py-4">Tu carrito está vacío.</p>';
-        if (totalSpan) totalSpan.textContent = '$0';
+        alert('❌ Tu carrito está vacío. Agrega productos antes de continuar.');
         return;
     }
-
-    let html = '';
-    let total = 0;
-
-    carrito.forEach(item => {
-        const subtotal = item.precio * item.cantidad;
-        total += subtotal;
-        html += `
-            <div class="mini-cart-item">
-                <img src="${item.imagen}" alt="${item.nombre}" class="mini-cart-img" loading="lazy">
-                <div class="mini-cart-item-info">
-                    <div class="mini-nombre">${item.nombre}</div>
-                    <div class="mini-precio">$${item.precio.toLocaleString()}</div>
-                    <div class="d-flex align-items-center gap-1 mt-1">
-                        <button class="btn btn-qty btn-qty-mini" onclick="cambiarCantidad(${item.id}, -1)">−</button>
-                        <span class="fw-semibold qty-value-mini">${item.cantidad}</span>
-                        <button class="btn btn-qty btn-qty-mini" onclick="cambiarCantidad(${item.id}, 1)">+</button>
-                        <button class="btn btn-sm btn-outline-danger ms-2 px-2" onclick="eliminarProductoMini(${item.id})" style="font-size:0.75rem;">
-                            <i class="bi bi-trash3"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-
-    contenedor.innerHTML = html;
-    if (totalSpan) totalSpan.textContent = `$${total.toLocaleString()}`;
-}
-
-function eliminarProductoMini(idProducto) {
-    eliminarProducto(idProducto);
-    renderizarMiniCarrito();
+    window.location.href = '/pages/direccion-envio.html';
 }
