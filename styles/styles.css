@@ -134,4 +134,7 @@ p {
     fill: var(--dorado-acento);
 }
 
-
+/* Forzar color dorado en los títulos del footer */
+footer h5, #piepagina h5, .footer h5 {
+    color: var(--dorado-acento, #A67C00) !important;
+}

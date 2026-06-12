@@ -1,0 +1,319 @@
+/* =========================================
+   ESTILOS PARA LA PASARELA DE PAGO
+   ========================================= */
+
+/* Tarjeta del formulario */
+.checkout-card {
+    background-color: var(--blanco-puro);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.checkout-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Barra de progreso */
+.checkout-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--acero);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.step.active {
+    color: var(--dorado-acento);
+}
+
+.step.completed {
+    color: #28a745;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--gris-perla);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--marino-primario);
+    transition: all 0.3s ease;
+}
+
+.step.active .step-circle {
+    background-color: var(--dorado-acento);
+    color: white;
+    box-shadow: 0 4px 10px rgba(166, 124, 0, 0.3);
+}
+
+.step.completed .step-circle {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Métodos de pago */
+.payment-methods {
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 1rem;
+}
+
+.payment-methods .badge {
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+/* Estilos para los campos de formulario */
+.form-control, .form-select {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--dorado-acento);
+    box-shadow: 0 0 0 3px rgba(166, 124, 0, 0.1);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--marino-primario);
+    margin-bottom: 0.5rem;
+}
+
+.form-text {
+    font-size: 0.7rem;
+    color: var(--acero);
+    margin-top: 0.25rem;
+}
+
+/* Input group para tarjeta */
+.input-group-text {
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    background-color: var(--blanco-puro);
+}
+
+.input-group .form-control {
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+}
+
+/* Botones */
+.btn-gold, .btn-outline-dark {
+    border-radius: 40px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .checkout-card {
+        padding: 1.5rem;
+    }
+    .checkout-progress {
+        gap: 1rem;
+    }
+    .step span {
+        font-size: 0.7rem;
+    }
+    .step-circle {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    .form-control, .form-select {
+        padding: 0.6rem 0.8rem;
+    }
+    .btn-gold, .btn-outline-dark {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Resumen de pedido (para la página de confirmación) */
+.order-summary {
+    background-color: var(--gris-perla);
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.order-summary .product-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 0;
+}
+
+.order-summary .product-item:last-child {
+    border-bottom: none;
+}
+
+.shipping-info, .payment-info {
+    background-color: var(--gris-perla);
+    border-radius: 16px;
+    padding: 1rem;
+}
+
+.shipping-info p, .payment-info p {
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+/* Mensaje de éxito */
+.success-message {
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-message i {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+/* =========================================
+   MENÚ HAMBURGUESA - SOLO PARA PASARELA DE PAGO
+   ========================================= */
+
+/* Asegurar que el botón hamburguesa sea visible */
+@media (max-width: 991px) {
+    .pagina-pasarela .menu-hamburguesa {
+        display: block !important;
+        background: transparent;
+        border: none;
+        z-index: 1002;
+    }
+
+    /* Panel lateral del menú */
+    .pagina-pasarela .contenedor-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important;
+        width: 85% !important;
+        max-width: 350px !important;
+        height: 100vh !important;
+        background-color: var(--blanco-puro) !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 80px 20px 30px 20px !important;
+        transition: left 0.3s ease !important;
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2) !important;
+        z-index: 1001 !important;
+        overflow-y: auto !important;
+    }
+
+    .pagina-pasarela .contenedor-menu.activo {
+        left: 0 !important;
+    }
+
+    /* Fondo oscuro */
+    .pagina-pasarela .fondo-oscuro-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        backdrop-filter: blur(3px) !important;
+        z-index: 998 !important;
+        display: none !important;
+    }
+
+    .pagina-pasarela .fondo-oscuro-menu.activo {
+        display: block !important;
+    }
+
+    /* Evitar scroll del body */
+    body.pasarela-menu-abierto {
+        overflow: hidden !important;
+    }
+}
+
+/* Estilos para el menú en móvil */
+@media (max-width: 991px) {
+    .pagina-pasarela .contenedor-menu .nav {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .pagina-pasarela .contenedor-menu .nav li {
+        width: 100% !important;
+    }
+    
+    .pagina-pasarela .contenedor-menu .nav-link-custom {
+        width: 100% !important;
+        padding: 14px 16px !important;
+        background-color: var(--gris-perla) !important;
+        border-radius: 12px !important;
+        font-size: 1rem !important;
+        white-space: normal !important;
+    }
+    
+    .pagina-pasarela .contenedor-menu .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 10px 0 0 20px !important;
+    }
+    
+    .pagina-pasarela .contenedor-menu .acciones-usuario {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+        border-top: 1px solid #e5e5e7 !important;
+    }
+    
+    .pagina-pasarela .contenedor-menu .acciones-usuario .btn-capsule,
+    .pagina-pasarela .contenedor-menu #usuarioLogueado {
+        width: 100% !important;
+    }
+    
+    .pagina-pasarela .contenedor-menu .btn-capsule {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* En desktop, el menú no es fijo */
+@media (min-width: 992px) {
+    .pagina-pasarela .contenedor-menu {
+        position: static !important;
+        left: auto !important;
+        width: auto !important;
+        height: auto !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        display: flex !important;
+    }
+    
+    .pagina-pasarela .fondo-oscuro-menu {
+        display: none !important;
+    }
+}
