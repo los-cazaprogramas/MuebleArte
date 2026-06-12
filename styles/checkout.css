@@ -195,55 +195,57 @@
    ========================================= */
 
 /* Asegurar que el botón hamburguesa sea visible */
-.pagina-pasarela .menu-hamburguesa {
-    display: block !important;
-    background: transparent;
-    border: none;
-    z-index: 1002;
-}
+@media (max-width: 991px) {
+    .pagina-pasarela .menu-hamburguesa {
+        display: block !important;
+        background: transparent;
+        border: none;
+        z-index: 1002;
+    }
 
-/* Panel lateral del menú */
-.pagina-pasarela .contenedor-menu {
-    position: fixed !important;
-    top: 0 !important;
-    left: -100% !important;
-    width: 85% !important;
-    max-width: 350px !important;
-    height: 100vh !important;
-    background-color: var(--blanco-puro) !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 80px 20px 30px 20px !important;
-    transition: left 0.3s ease !important;
-    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2) !important;
-    z-index: 1001 !important;
-    overflow-y: auto !important;
-}
+    /* Panel lateral del menú */
+    .pagina-pasarela .contenedor-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important;
+        width: 85% !important;
+        max-width: 350px !important;
+        height: 100vh !important;
+        background-color: var(--blanco-puro) !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 80px 20px 30px 20px !important;
+        transition: left 0.3s ease !important;
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2) !important;
+        z-index: 1001 !important;
+        overflow-y: auto !important;
+    }
 
-.pagina-pasarela .contenedor-menu.activo {
-    left: 0 !important;
-}
+    .pagina-pasarela .contenedor-menu.activo {
+        left: 0 !important;
+    }
 
-/* Fondo oscuro */
-.pagina-pasarela .fondo-oscuro-menu {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    backdrop-filter: blur(3px) !important;
-    z-index: 998 !important;
-    display: none !important;
-}
+    /* Fondo oscuro */
+    .pagina-pasarela .fondo-oscuro-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        backdrop-filter: blur(3px) !important;
+        z-index: 998 !important;
+        display: none !important;
+    }
 
-.pagina-pasarela .fondo-oscuro-menu.activo {
-    display: block !important;
-}
+    .pagina-pasarela .fondo-oscuro-menu.activo {
+        display: block !important;
+    }
 
-/* Evitar scroll del body */
-body.pasarela-menu-abierto {
-    overflow: hidden !important;
+    /* Evitar scroll del body */
+    body.pasarela-menu-abierto {
+        overflow: hidden !important;
+    }
 }
 
 /* Estilos para el menú en móvil */
@@ -311,118 +313,6 @@ body.pasarela-menu-abierto {
         display: flex !important;
     }
     
-    .pagina-pasarela .fondo-oscuro-menu {
-        display: none !important;
-    }
-}
-/* =========================================
-   MENÚ HAMBURGUESA - SOLO PARA PASARELA DE PAGO
-   ========================================= */
-
-.pagina-pasarela .menu-hamburguesa {
-    display: block !important;
-    background: transparent;
-    border: none;
-    z-index: 1002;
-}
-
-.pagina-pasarela .contenedor-menu {
-    position: fixed !important;
-    top: 0 !important;
-    left: -100% !important;
-    width: 85% !important;
-    max-width: 350px !important;
-    height: 100vh !important;
-    background-color: var(--blanco-puro) !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 80px 20px 30px 20px !important;
-    transition: left 0.3s ease !important;
-    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2) !important;
-    z-index: 1001 !important;
-    overflow-y: auto !important;
-}
-
-.pagina-pasarela .contenedor-menu.activo {
-    left: 0 !important;
-}
-
-.pagina-pasarela .fondo-oscuro-menu {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    backdrop-filter: blur(3px) !important;
-    z-index: 998 !important;
-    display: none !important;
-}
-
-.pagina-pasarela .fondo-oscuro-menu.activo {
-    display: block !important;
-}
-
-body.pasarela-menu-abierto {
-    overflow: hidden !important;
-}
-
-@media (max-width: 991px) {
-    .pagina-pasarela .contenedor-menu .nav {
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 12px !important;
-        margin-bottom: 30px !important;
-    }
-    .pagina-pasarela .contenedor-menu .nav li {
-        width: 100% !important;
-    }
-    .pagina-pasarela .contenedor-menu .nav-link-custom {
-        width: 100% !important;
-        padding: 14px 16px !important;
-        background-color: var(--gris-perla) !important;
-        border-radius: 12px !important;
-        font-size: 1rem !important;
-        white-space: normal !important;
-    }
-    .pagina-pasarela .contenedor-menu .dropdown-menu {
-        position: static !important;
-        transform: none !important;
-        width: 100% !important;
-        background-color: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 10px 0 0 20px !important;
-    }
-    .pagina-pasarela .contenedor-menu .acciones-usuario {
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 12px !important;
-        margin-top: 20px !important;
-        padding-top: 20px !important;
-        border-top: 1px solid #e5e5e7 !important;
-    }
-    .pagina-pasarela .contenedor-menu .acciones-usuario .btn-capsule,
-    .pagina-pasarela .contenedor-menu #usuarioLogueado {
-        width: 100% !important;
-    }
-    .pagina-pasarela .contenedor-menu .btn-capsule {
-        width: 100% !important;
-        justify-content: center !important;
-    }
-}
-
-@media (min-width: 992px) {
-    .pagina-pasarela .contenedor-menu {
-        position: static !important;
-        left: auto !important;
-        width: auto !important;
-        height: auto !important;
-        padding: 0 !important;
-        box-shadow: none !important;
-        overflow: visible !important;
-        display: flex !important;
-    }
     .pagina-pasarela .fondo-oscuro-menu {
         display: none !important;
     }

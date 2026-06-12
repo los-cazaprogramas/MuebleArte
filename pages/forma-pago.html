@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forma de pago - MuebleArte</title>
     <link rel="icon" type="image/png" href="/assets/pestañaimg.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="../styles/header-footer.css" rel="stylesheet">
@@ -13,11 +13,13 @@
 </head>
 <body class="pagina-pasarela">
 
+    <!------------------------------------------------------------------------------------------Encabezado Inicio---------------------------------------------------------------------------------------------------------------------------------------------------------->
 <header class="header-mueble-arte">
   <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
     <div class="logo-wrapper">
       <a href="/index.html">
-        <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo"></a>
+        <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+      </a>
     </div>
 
     <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
@@ -30,7 +32,9 @@
         <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
         <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías</a>
+          <a class="nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorías
+          </a>
           <ul class="dropdown-menu shadow-sm border-0">
             <li><a class="dropdown-item" href="/pages/libreros.html">Libreros</a></li>
             <li><a class="dropdown-item" href="/pages/sillas.html">Sillas</a></li>
@@ -46,14 +50,22 @@
         <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
           <i class="bi bi-cart3"></i> Carrito</a>
         <div id="botonesAuth" class="d-flex gap-2">
-          <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">Iniciar Sesión</a>
-          <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">Registrarse</a>
+          <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
+            <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+          </a>
+          <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
+            <i class="bi bi-person-plus"></i> Registrarse
+          </a>
         </div>
         <div id="usuarioLogueado" class="dropdown d-none">
-          <button class="btn btn-capsule btn-gold dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" id="nombreUsuarioNavbar">Usuario</button>
+          <button class="btn btn-capsule btn-gold dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="nombreUsuarioNavbar">Usuario</button>
           <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-            <li><a class="dropdown-item" href="/pages/perfil.html">Mi perfil</a></li>
-            <li><button class="dropdown-item text-danger" id="cerrarSesionBtn">Cerrar sesión</button></li>
+            <li>
+              <a class="dropdown-item" href="/pages/perfil.html">Mi perfil</a>
+            </li>
+            <li>
+              <button class="dropdown-item text-danger" id="cerrarSesionBtn">Cerrar sesión</button>
+            </li>
           </ul>
         </div>
       </div>
