@@ -1,5 +1,5 @@
 // Endpoint de tu API REST en Spring Boot
-const API_URL_PRODUCTOS = "http://localhost:8080/api/productos";
+const API_URL_PRODUCTOS = CONFIG.API_PRODUCTOS_URL;
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarCatalogoPublico();
@@ -9,6 +9,7 @@ async function cargarCatalogoPublico() {
     // Mapeamos los ID de tus contenedores HTML existentes
     const carruselSillas = document.getElementById('sillasCarousel');
     const carruselMesas = document.getElementById('mesasCarousel');
+    const carruselSillones = document.getElementById('sillonesCarousel');
     const carruselLibreros = document.getElementById('librerosCarousel');
 
     try {
@@ -17,9 +18,10 @@ async function cargarCatalogoPublico() {
 
         const muebles = await respuesta.json();
 
-        // Limpiamos los tres contenedores por si acaso
+        // Limpiamos los contenedores por si acaso
         if(carruselSillas) carruselSillas.innerHTML = '';
         if(carruselMesas) carruselMesas.innerHTML = '';
+        if(carruselSillones) carruselSillones.innerHTML = '';
         if(carruselLibreros) carruselLibreros.innerHTML = '';
 
         if (!muebles || muebles.length === 0) {
@@ -44,7 +46,7 @@ async function cargarCatalogoPublico() {
                 urlImagen = "https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=600&auto=format&fit=crop";
             } else {
                 // Si la ruta ya empieza con http, la usamos directa; si no, le concatenamos el servidor de Spring Boot
-                urlImagen = imagenOriginal.startsWith('http') ? imagenOriginal : `http://localhost:8080${imagenOriginal}`;
+                urlImagen = imagenOriginal.startsWith('http') ? imagenOriginal : CONFIG.API_BASE_URL + (imagenOriginal.startsWith('/') ? imagenOriginal : '/' + imagenOriginal);
             }
             
             // Descripción del mueble y características
@@ -90,14 +92,15 @@ async function cargarCatalogoPublico() {
             `;
 
             // Clasificación por categoría inteligente: Inyecta la Card en el contenedor correspondiente
-            if (categoriaNombre.includes("silla")) {
+            if (categoriaNombre.includes("silla") && !categoriaNombre.includes("sillon")) {
                 if (carruselSillas) carruselSillas.appendChild(cardHtml);
             } else if (categoriaNombre.includes("mesa")) {
                 if (carruselMesas) carruselMesas.appendChild(cardHtml);
+            } else if (categoriaNombre.includes("sillon")) {
+                if (carruselSillones) carruselSillones.appendChild(cardHtml);
             } else if (categoriaNombre.includes("librero")) {
                 if (carruselLibreros) carruselLibreros.appendChild(cardHtml);
             } else {
-                // Categorías por defecto o adicionales
                 if (carruselSillas) carruselSillas.appendChild(cardHtml);
             }
         });

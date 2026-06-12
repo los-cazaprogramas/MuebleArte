@@ -1,4 +1,4 @@
-const URL_BASE_API = "http://localhost:8080/api/productos";
+const URL_BASE_API = CONFIG.API_PRODUCTOS_URL;
 
 // Variable global para almacenar el producto que baje de la BD
 let productoActual = null;
@@ -39,7 +39,7 @@ async function cargarDetalleProducto(id) {
             document.getElementById("det-descripcion").textContent = productoActual.descripcionProducto || "Sin descripción disponible.";
         }
         if (document.getElementById("det-codigo")) {
-            document.getElementById("det-codigo").textContent = productoActual.codigoProducto || `MUE-${productoActual.idProducto}`;
+            document.getElementById("det-codigo").textContent = productoActual.codigoProducto || `MUE-${productoActual.id || productoActual.idProducto}`;
         }
         if (document.getElementById("det-breadcrumb-categoria")) {
             document.getElementById("det-breadcrumb-categoria").textContent = productoActual.categoria?.nombreCategoria || "Mueble";
@@ -69,7 +69,7 @@ async function cargarDetalleProducto(id) {
                     rutaFinal = urlImg;
                 } else {
                     // Mapeo directo para tus imágenes guardadas localmente en Spring Boot
-                    rutaFinal = urlImg.startsWith('/') ? `http://localhost:8080${urlImg}` : `http://localhost:8080/${urlImg}`;
+                    rutaFinal = CONFIG.API_BASE_URL + (urlImg.startsWith('/') ? urlImg : '/' + urlImg);
                 }
             } else {
                 rutaFinal = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800"; 
@@ -85,7 +85,7 @@ async function cargarDetalleProducto(id) {
 
         // Cargar sugerencias relacionadas
         if (productoActual.categoria?.idCategoria) {
-            cargarProductosRelacionados(productoActual.categoria.idCategoria, productoActual.idProducto);
+            cargarProductosRelacionados(productoActual.categoria.idCategoria, productoActual.id || productoActual.idProducto);
         }
 
     } catch (error) {
@@ -100,7 +100,7 @@ async function cargarProductosRelacionados(idCategoria, idProductoActual) {
         const respuesta = await fetch(URL_BASE_API);
         const todos = await respuesta.json();
         
-        const filtrados = todos.filter(p => p.categoria?.idCategoria === idCategoria && p.idProducto !== idProductoActual).slice(0, 4);
+        const filtrados = todos.filter(p => p.categoria?.idCategoria === idCategoria && (p.id || p.idProducto) !== idProductoActual).slice(0, 4);
         
         const contenedor = document.getElementById("contenedor-relacionados");
         if (!contenedor) return;
@@ -115,7 +115,7 @@ async function cargarProductosRelacionados(idCategoria, idProductoActual) {
             let imgRuta = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800";
             if (p.imagenUrl && p.imagenUrl.trim() !== "") {
                 const u = p.imagenUrl.trim();
-                imgRuta = u.startsWith('http') ? u : `http://localhost:8080${u.startsWith('/') ? '' : '/'}${u}`;
+                imgRuta = u.startsWith('http') ? u : CONFIG.API_BASE_URL + (u.startsWith('/') ? u : '/' + u);
             }
 
             contenedor.innerHTML += `
@@ -127,7 +127,7 @@ async function cargarProductosRelacionados(idCategoria, idProductoActual) {
                                 <h5 class="card-title fw-bold" style="font-size: 1rem;">${p.nombreProducto}</h5>
                                 <p class="text-danger fw-semibold">$${p.precio.toLocaleString('es-MX')}.00</p>
                             </div>
-                            <a href="/pages/detalle-producto.html?id=${p.idProducto}" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Ver detalles</a>
+                            <a href="/pages/detalle-producto.html?id=${p.id || p.idProducto}" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Ver detalles</a>
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@ function agregarAlCarritoDesdeDetalle() {
     const imagenHtml = document.getElementById("det-imagen")?.src || "";
     const descripcionHtml = document.getElementById("det-descripcion")?.textContent || "";
 
-    const idReal = parseInt(productoActual?.idProducto || idDesdeUrl, 10);
+    const idReal = parseInt(productoActual?.id || productoActual?.idProducto || idDesdeUrl, 10);
 
     if (!idReal) {
         mostrarToastEstetico("❌ Error: No se pudo validar el identificador del mueble.", "error");
@@ -177,7 +177,7 @@ function agregarAlCarritoDesdeDetalle() {
         nombre: productoActual?.nombreProducto || nombreHtml,
         precio: productoActual?.precio ? parseInt(productoActual.precio) : precioHtml,
         imagen: productoActual?.imagenUrl 
-            ? (productoActual.imagenUrl.startsWith('http') ? productoActual.imagenUrl : `http://localhost:8080${productoActual.imagenUrl}`) 
+            ? (productoActual.imagenUrl.startsWith('http') ? productoActual.imagenUrl : CONFIG.API_BASE_URL + (productoActual.imagenUrl.startsWith('/') ? productoActual.imagenUrl : '/' + productoActual.imagenUrl)) 
             : imagenHtml,
         descripcion: productoActual?.descripcionProducto || descripcionHtml,
         link: window.location.pathname + window.location.search

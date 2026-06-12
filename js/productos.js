@@ -1,4 +1,4 @@
-const URL_BASE_API_PROD = "http://localhost:8080/api/productos";
+const URL_BASE_API_PROD = CONFIG.API_PRODUCTOS_URL;
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("🚀 Script productos.js (Catálogo General) cargado correctamente.");
@@ -56,7 +56,7 @@ function renderizarCatalogoPrincipal(productos) {
         let imgRuta = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800";
         if (producto.imagenUrl && producto.imagenUrl.trim() !== "") {
             const u = producto.imagenUrl.trim();
-            imgRuta = u.startsWith('http') ? u : `http://localhost:8080${u.startsWith('/') ? '' : '/'}${u}`;
+            imgRuta = u.startsWith('http') ? u : CONFIG.API_BASE_URL + (u.startsWith('/') ? u : '/' + u);
         }
 
         // Crear el HTML de la tarjeta (Card) exactamente como tu diseño
@@ -73,11 +73,11 @@ function renderizarCatalogoPrincipal(productos) {
                             <p class="text-dark fw-bold fs-5 mb-3">$${producto.precio.toLocaleString('es-MX')}.00 MXN</p>
                         </div>
                         <div class="d-flex gap-2 justify-content-center mt-auto">
-                            <a href="/pages/detalle-producto.html?id=${producto.idProducto}" class="btn btn-outline-dark btn-sm rounded-pill px-3" style="font-size: 0.85rem;">
+                            <a href="/pages/detalle-producto.html?id=${producto.id || producto.idProducto}" class="btn btn-outline-dark btn-sm rounded-pill px-3" style="font-size: 0.85rem;">
                                 <i class="bi bi-eye"></i> Ver
                             </a>
                             <button class="btn btn-gold btn-sm rounded-pill px-3 text-white" style="font-size: 0.85rem;" 
-                                onclick="agregarAlCarritoDesdeCatalogo(${producto.idProducto}, '${producto.nombreProducto.replace(/'/g, "\\'")}', ${producto.precio}, '${imgRuta}')">
+                                onclick="agregarAlCarritoDesdeCatalogo(${producto.id || producto.idProducto}, '${producto.nombreProducto.replace(/'/g, "\\'")}', ${producto.precio}, '${imgRuta}')">
                                 <i class="bi bi-cart-plus"></i> Agregar
                             </button>
                         </div>

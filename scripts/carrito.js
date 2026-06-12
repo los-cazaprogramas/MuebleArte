@@ -39,6 +39,8 @@ function agregarProducto(producto) {
     }
     guardarCarrito();
     renderizarCarrito();
+    renderMiniCarrito();
+    mostrarMiniCarrito();
 }
 
 function eliminarProducto(idProducto) {
@@ -163,10 +165,89 @@ function escapeHtml(texto) {
     return div.innerHTML;
 }
 
+// ---------- MINI CARRITO (OFFCANVAS) ----------
+function renderMiniCarrito() {
+    const contenedor = document.getElementById("miniCartItems");
+    const totalSpan = document.getElementById("miniCartTotal");
+    if (!contenedor) return;
+
+    if (carrito.length === 0) {
+        contenedor.innerHTML = `<div class="text-center text-muted py-5"><i class="bi bi-cart-x fs-1"></i><p class="mt-2">Tu carrito está vacío.</p></div>`;
+        if (totalSpan) totalSpan.innerText = "$0";
+        return;
+    }
+
+    let html = "";
+    let total = 0;
+
+    carrito.forEach(item => {
+        const subtotal = item.precio * item.cantidad;
+        total += subtotal;
+        html += `
+            <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom mini-cart-item">
+                <img src="${item.imagen}" alt="${escapeHtml(item.nombre)}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                <div class="flex-grow-1">
+                    <p class="mb-0 fw-semibold small">${escapeHtml(item.nombre)}</p>
+                    <p class="mb-0 text-muted small">$${item.precio.toLocaleString()} x ${item.cantidad}</p>
+                </div>
+                <span class="fw-bold small">$${subtotal.toLocaleString()}</span>
+                <button class="btn btn-sm text-danger p-0" onclick="eliminarProducto(${item.id})"><i class="bi bi-x-lg"></i></button>
+            </div>
+        `;
+    });
+
+    contenedor.innerHTML = html;
+    if (totalSpan) totalSpan.innerText = `$${total.toLocaleString()}`;
+}
+
+function mostrarMiniCarrito() {
+    const offcanvas = document.getElementById("miniCarrito");
+    if (!offcanvas) return;
+    const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvas) || new bootstrap.Offcanvas(offcanvas);
+    bsOffcanvas.show();
+}
+
+function mostrarToastEstetico(mensaje, tipo) {
+    const colores = { success: '#198754', error: '#dc3545', info: '#0dcaf0' };
+    const color = colores[tipo] || colores.info;
+    const toast = document.createElement('div');
+    toast.className = 'toast align-items-center text-white border-0 position-fixed bottom-0 end-0 m-3';
+    toast.style.cssText = `z-index: 1080; background-color: ${color}; min-width: 250px;`;
+    toast.innerHTML = `<div class="d-flex"><div class="toast-body">${mensaje}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
+    document.body.appendChild(toast);
+    const bsToast = new bootstrap.Toast(toast, { delay: 3000 });
+    bsToast.show();
+    toast.addEventListener('hidden.bs.toast', () => toast.remove());
+}
+
+// ---------- FUNCIÓN PARA AGREGAR DESDE TARJETAS DEL CATÁLOGO ----------
+function agregarProductoDesdeCard(btnElement) {
+    const card = btnElement.closest('.product-card, .card, [data-id]');
+    if (!card) return;
+
+    const id = parseInt(card.getAttribute('data-id'));
+    const nombre = card.getAttribute('data-nombre');
+    const precio = parseFloat(card.getAttribute('data-precio'));
+    const imagen = card.getAttribute('data-imagen') || '';
+    const descripcion = card.getAttribute('data-descripcion') || '';
+
+    if (!id || !nombre || isNaN(precio)) return;
+
+    agregarProducto({
+        id: id,
+        nombre: nombre,
+        precio: precio,
+        imagen: imagen,
+        descripcion: descripcion,
+        link: window.location.href
+    });
+}
+
 // ---------- INICIALIZACIÓN ----------
 document.addEventListener("DOMContentLoaded", () => {
     cargarCarrito();
     renderizarCarrito();
+    renderMiniCarrito();
 
     // Botón vaciar carrito
     const vaciarBtn = document.getElementById("vaciarCarritoBtn");

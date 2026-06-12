@@ -1,16 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     const btnHamburguesa = document.getElementById('btnHamburguesa');
     const menuPrincipal = document.getElementById('menuPrincipal');
-    const fondoMenu = document.getElementById('fondoMenu'); // Llamamos al nuevo fondo
+    const fondoMenu = document.getElementById('fondoMenu');
     
     if(btnHamburguesa && menuPrincipal && fondoMenu) {
-        
-        // Función para abrir/cerrar el menú
         function toggleMenu() {
             menuPrincipal.classList.toggle('activo');
-            fondoMenu.classList.toggle('activo'); // Alterna el fondo oscuro
-            
-            // Cambia el ícono de hamburguesa a la "X"
+            fondoMenu.classList.toggle('activo');
             const icono = btnHamburguesa.querySelector('i');
             if(menuPrincipal.classList.contains('activo')) {
                 icono.classList.remove('bi-list');
@@ -20,11 +16,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 icono.classList.add('bi-list');
             }
         }
-
-        // Evento al tocar el botón hamburguesa
         btnHamburguesa.addEventListener('click', toggleMenu);
-        
-        // Evento al tocar el fondo oscuro (para cerrar el menú)
         fondoMenu.addEventListener('click', toggleMenu);
     }
 });
+
+function scrollCarousel(containerId, direction) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const card = container.querySelector('.card');
+    const cardWidth = card ? card.offsetWidth + 24 : 300;
+    container.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+    });
+}

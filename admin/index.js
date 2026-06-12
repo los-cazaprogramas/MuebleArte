@@ -1,5 +1,5 @@
 // Endpoint real de tu API REST en Spring Boot
-const API_URL = "http://localhost:8080/api/productos";
+const API_URL = CONFIG.API_PRODUCTOS_URL;
 
 // Este evento se dispara automáticamente al cargar la página
 document.addEventListener('DOMContentLoaded', () => {

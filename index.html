@@ -47,8 +47,7 @@
             <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=1">Sillas</a></li>
             <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=2">Mesas</a></li>
             <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=3">Sillones</a></li>
-            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=6">Bases para cama</a></li>
-            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=5">Cajoneras</a></li>
+
           </ul>
         </li>
 
@@ -191,6 +190,16 @@
             <button class="carousel-btn next-btn" onclick="scrollCarousel('mesasCarousel', 1)">›</button>
         </div>
     </div>
+    <!-- Sillones -->
+    <div class="categoria-section mb-5">
+        <h3 class="mb-4 pb-2 border-bottom d-inline-block" style="border-color: var(--color-dorado-light); color: var(--texto-principal);">🛋️ Sillones</h3>
+        <div class="product-carousel-container">
+            <button class="carousel-btn prev-btn" onclick="scrollCarousel('sillonesCarousel', -1)">‹</button>
+            <div id="sillonesCarousel" class="product-carousel d-flex">
+                </div>
+            <button class="carousel-btn next-btn" onclick="scrollCarousel('sillonesCarousel', 1)">›</button>
+        </div>
+    </div>
     <!-- Libreros -->
     <div class="categoria-section mb-5">
         <h3 class="mb-4 pb-2 border-bottom d-inline-block" style="border-color: var(--color-dorado-light); color: var(--texto-principal);">📚 Libreros</h3>
@@ -208,7 +217,7 @@
         <span class="badge-oferta">Oferta especial</span>
         <h2 class="display-6 fw-bold" style="color: var(--texto-principal);">¡Lleva el tuyo con 15% de descuento!</h2>
         <p class="mb-4" style="color: var(--texto-secundario);">En compras mayores a $3,000 MXN. Válido por tiempo limitado.</p>
-        <a href="#" class="btn btn-cta btn-lg">Ver promociones</a>
+
     </div>
 </div>
 
@@ -287,6 +296,7 @@
 </div>
 
 <!--Enlaces finales-->
+    <script src="./js/config.js"></script>
     <script src="./js/script.js"></script>
     <script src="../scripts/auth.js"></script>
     <script src="./js/catalogo.js"></script>

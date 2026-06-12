@@ -1,12 +1,11 @@
-const URL_BASE_API = "http://localhost:8080/api/productos";
+const URL_BASE_API = CONFIG.API_PRODUCTOS_URL;
 
 const NOMBRES_CATEGORIAS = {
     1: "Sillas Artesanales",
     2: "Mesas Exclusivas",
     3: "Sillones Confort",
     4: "Libreros y Estantes",
-    5: "Cajoneras de Madera",
-    6: "Bases para Cama"
+
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -58,7 +57,7 @@ async function cargarCatalogoFiltrado(idCategoria, contenedor) {
             let imgRuta = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800&auto=format&fit=crop";
             if (producto.imagenUrl && producto.imagenUrl.trim() !== "") {
                 const url = producto.imagenUrl.trim();
-                imgRuta = url.startsWith('http') ? url : `http://localhost:8080${url.startsWith('/') ? '' : '/'}${url}`;
+                imgRuta = url.startsWith('http') ? url : CONFIG.API_BASE_URL + (url.startsWith('/') ? url : '/' + url);
             }
 
             const precioFormateado = (producto.precio && typeof producto.precio === 'number') 
@@ -68,8 +67,8 @@ async function cargarCatalogoFiltrado(idCategoria, contenedor) {
             contenedor.innerHTML += `
                 <div class="col">
                     <div class="card h-100 border-0 shadow-sm product-card" 
-                         data-id="${producto.idProducto}" 
-                         data-id-producto="${producto.idProducto}"
+                         data-id="${producto.id}" 
+                         data-id-producto="${producto.id}"
                          data-nombre="${producto.nombreProducto}" 
                          data-precio="${producto.precio}" 
                          data-imagen="${imgRuta}"
@@ -94,7 +93,7 @@ async function cargarCatalogoFiltrado(idCategoria, contenedor) {
                                 </div>
                                 
                                 <div class="d-flex gap-2">
-                                    <a href="detalle-producto.html?id=${producto.idProducto}" class="btn btn-outline-dark btn-sm flex-grow-1 rounded-pill d-flex align-items-center justify-content-center gap-1">
+                                    <a href="detalle-producto.html?id=${producto.id}" class="btn btn-outline-dark btn-sm flex-grow-1 rounded-pill d-flex align-items-center justify-content-center gap-1">
                                          <i class="bi bi-eye"></i> Ver Detalle
                                     </a>
                                     <button class="btn btn-gold btn-sm rounded-pill px-3" onclick="agregarProductoDesdeCard(this)" ${producto.stock <= 0 ? 'disabled' : ''}>

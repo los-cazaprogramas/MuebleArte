@@ -208,17 +208,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 576px) {
+    .product-carousel-container {
+        padding: 0 0.5rem;
+    }
+
     .prev-btn {
-        left: -12px;
+        left: -4px;
     }
     .next-btn {
-        right: -12px;
+        right: -4px;
     }
     
     .carousel-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 20px;
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+    
+    .product-card {
+        width: 200px;
+        min-width: 200px;
+    }
+    
+    .product-card img {
+        height: 150px;
     }
 }
 

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/productos";
+const API_URL = CONFIG.API_PRODUCTOS_URL;
 
 const imageInput = document.getElementById('image-input');
 const uploadZone = document.getElementById('upload-zone');

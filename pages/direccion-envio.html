@@ -33,8 +33,7 @@
             <li><a class="dropdown-item" href="/pages/libreros.html">Libreros</a></li>
             <li><a class="dropdown-item" href="/pages/sillas.html">Sillas</a></li>
             <li><a class="dropdown-item" href="/pages/mesas.html">Mesas</a></li>
-            <li><a class="dropdown-item" href="/pages/base-cama.html">Bases para cama</a></li>
-            <li><a class="dropdown-item" href="/pages/cajoneras.html">Cajoneras</a></li>
+            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=3">Sillones</a></li>
           </ul>
         </li>
         <li><a href="/pages/preguntas-frecuentes.html" class="nav-link-custom">Preguntas frecuentes</a></li>
@@ -71,23 +70,6 @@
         <div class="col-12 col-md-8 col-lg-6">
             <div class="checkout-card">
                 <h1 class="h3 fw-bold mb-4"><i class="bi bi-geo-alt-fill me-2" style="color: var(--dorado-acento);"></i>Dirección de envío</h1>
-                <form id="formDireccion" onsubmit="return false;">
-                    <div class="mb-3"><label class="form-label">Nombre completo *</label><input type="text" class="form-control" id="nombreCompleto" placeholder="Ej. Juan Pérez" required></div>
-                    <div class="mb-3"><label class="form-label">Dirección *</label><input type="text" class="form-control" id="direccion" placeholder="Calle, número, colonia" required></div>
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-7"><label class="form-label">Ciudad *</label><input type="text" class="form-control" id="ciudad" placeholder="Ej. Monterrey" required></div>
-                        <div class="col-md-5"><label class="form-label">Código postal *</label><input type="text" class="form-control" id="codigoPostal" placeholder="5 dígitos" required></div>
-                    </div>
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6"><label class="form-label">Estado *</label><input type="text" class="form-control" id="estado" placeholder="Ej. Nuevo León" required></div>
-                        <div class="col-md-6"><label class="form-label">País *</label><select class="form-select" id="pais" required><option value="">Seleccionar</option><option>México</option><option>Colombia</option><option>Argentina</option><option>Chile</option><option>Perú</option><option>España</option></select></div>
-                    </div>
-                    <div class="mb-3"><label class="form-label">Teléfono *</label><input type="tel" class="form-control" id="telefono" placeholder="10 dígitos" required></div>
-                    <div class="mb-4"><label class="form-label">Instrucciones adicionales</label><textarea class="form-control" id="instrucciones" rows="2" placeholder="Indicaciones para la entrega..."></textarea></div>
-                    
-                    <div class="d-flex justify-content-between gap-3">
-                        <a href="/pages/carrito.html" class="btn btn-outline-dark btn-capsule px-4">Volver</a>
-                        <a href="./forma-pago.html" class="btn btn-gold btn-capsule px-4 d-inline-flex align-items-center justify-content-center">Continuar →</a>
                 <form id="formDireccion">
                     <div class="mb-3"><label class="form-label">Nombre completo *</label><input type="text" class="form-control" id="nombreCompleto" required></div>
                     <div class="mb-3"><label class="form-label">Dirección *</label><input type="text" class="form-control" id="direccion" required></div>
@@ -149,11 +131,12 @@
     </div>
 </div>
 
+	<script src="../js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<script src="../js/auth.js"></script>
+<script src="/scripts/auth.js"></script>
 <script src="/scripts/menu-pasarela.js"></script>
-<script src="../js/direccion-envio.js"></script>
+<script src="/scripts/direccion-envio.js"></script>
 </body>
 </html>
