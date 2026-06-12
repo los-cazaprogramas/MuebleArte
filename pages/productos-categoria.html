@@ -16,7 +16,75 @@
     </style>
 </head>
 <body>
+    <header class="header-mueble-arte">
+  <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
+    
+    <div class="logo-wrapper">
+      <a href="/index.html">
+        <img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo">
+      </a>
+    </div>
 
+    <button class="menu-hamburguesa d-lg-none" id="btnHamburguesa" aria-label="Abrir menú">
+      <i class="bi bi-list fs-1 text-dark"></i>
+    </button>
+
+    <div class="contenedor-menu d-flex align-items-center" id="menuPrincipal">
+      
+      <ul class="nav align-items-center gap-3 mx-lg-3">
+        <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
+        <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link-custom dropdown-toggle text-dark text-decoration-none fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorías
+          </a>
+          <ul class="dropdown-menu shadow-sm border-0">
+            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=4">Libreros</a></li>
+            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=1">Sillas</a></li>
+            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=2">Mesas</a></li>
+            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=3">Sillones</a></li>
+            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=6">Bases para cama</a></li>
+            <li><a class="dropdown-item" href="/pages/productos-categoria.html?cat=5">Cajoneras</a></li>
+          </ul>
+        </li>
+        <li><a href="/pages/preguntas-frecuentes.html" class="nav-link-custom">Preguntas frecuentes</a></li>
+      </ul>
+
+      <div class="acciones-usuario d-flex align-items-center gap-2 ms-lg-3">
+
+        <a href="/pages/carrito.html" class="btn btn-capsule btn-outline-dark">
+          <i class="bi bi-cart3"></i> Carrito
+        </a>
+
+        <div id="botonesAuth" class="d-flex gap-2">
+          <a href="/pages/login.html" class="btn btn-capsule btn-outline-dark">
+            <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+          </a>
+          <a href="/pages/registro.html" class="btn btn-capsule btn-gold text-white">
+            <i class="bi bi-person-plus"></i> Registrarse
+          </a>
+        </div>
+
+        <div id="usuarioLogueado" class="dropdown d-none">
+          <button class="btn btn-capsule btn-gold dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="nombreUsuarioNavbar">
+            Usuario
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+            <li><a class="dropdown-item" href="/pages/perfil.html">Mi perfil</a></li>
+            <li>
+              <button class="dropdown-item text-danger" id="cerrarSesionBtn">
+                Cerrar sesión
+              </button>
+            </li>
+          </ul>
+        </div>
+
+      </div> </div> </nav>
+  
+  <div class="fondo-oscuro-menu d-lg-none" id="fondoMenu"></div>
+</header>
+<!--Fin de header-->
     <main class="container my-5 pt-4">
         <div class="mb-5">
             <h1 class="display-5 fw-bold" id="titulo-categoria" style="color: #0b1a30;">Cargando categoría...</h1>
@@ -30,9 +98,62 @@
             </div>
         </div>
     </main>
+    
 
     <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-
+    <!--Inicio footer-->
+    <div class="container-fluid mt-5 p-0 bg-marino">
+  <div class="container" id="piepagina">
+    <footer class="pt-5 pb-3">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Secciones</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/index.html" class="nav-link p-0">Inicio</a></li>
+            <li class="nav-item mb-2"><a href="/pages/carrito.html" class="nav-link p-0">Carrito de compra</a></li>
+            <li class="nav-item mb-2"><a href="/pages/login.html" class="nav-link p-0">Iniciar sesión</a></li>
+            <li class="nav-item mb-2"><a href="/pages/crear-perfil.html" class="nav-link p-0">Crear perfil</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Atención al cliente</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/pages/contacto.html" class="nav-link p-0">Contáctanos</a></li>
+            <li class="nav-item mb-2"><a href="/pages/preguntas-frecuentes.html" class="nav-link p-0">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Acerca de MuebleArte</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/pages/about-us.html" class="nav-link p-0">Acerca de nosotros</a></li>
+          </ul>
+        </div>
+        <div class="col-md-5 offset-md-1 mb-3">
+          <form>
+            <h5>Suscríbete para recibir lo mejor de MuebleArte</h5>
+            <p>¡No te pierdas de nada!</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Email</label>
+              <input id="newsletter1" type="email" class="form-control" placeholder="Correo electrónico">
+              <button class="btn btn-dorado" type="button">Suscribirse</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 mb-1 border-top border-secondary">
+        <p class="mb-0">© 2026 MuebleArte, Inc. Todos los derechos reservados.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3">
+            <a class="link-light" target="_blank" href="https://www.instagram.com/mueble_arte_/" aria-label="Instagram">
+              <i class="bi bi-instagram fs-4"></i>
+            </a>
+          
+        </ul>
+      </div>
+    </footer>
+  </div>
+</div>
+    <!--Fin footer-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/scripts/carrito.js"></script> <script src="/js/categorias-dinamicas.js"></script> </body>
 </html>

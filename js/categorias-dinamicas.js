@@ -1,6 +1,5 @@
 const URL_BASE_API = "http://localhost:8080/api/productos";
 
-// Mapeo estético corregido para alinearse perfectamente con tus URLs de categorias.html
 const NOMBRES_CATEGORIAS = {
     1: "Sillas Artesanales",
     2: "Mesas Exclusivas",
@@ -11,7 +10,6 @@ const NOMBRES_CATEGORIAS = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Capturar el ID de la categoría desde la URL
     const parametrosUrl = new URLSearchParams(window.location.search);
     const idCategoria = parseInt(parametrosUrl.get("cat"), 10);
 
@@ -24,23 +22,23 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // 2. Personalizar el título de la página con el mapeo correcto
     if (titulo && NOMBRES_CATEGORIAS[idCategoria]) {
         titulo.textContent = NOMBRES_CATEGORIAS[idCategoria];
     }
 
-    // 3. Traer los productos filtrados
+    // Llamamos a la función correcta que filtra en Frontend
     cargarCatalogoFiltrado(idCategoria, contenedor);
 });
 
 async function cargarCatalogoFiltrado(idCategoria, contenedor) {
     try {
+        // Consultamos al endpoint base que SÍ tiene @CrossOrigin (origins = "*")
         const respuesta = await fetch(URL_BASE_API);
         if (!respuesta.ok) throw new Error("No se pudo conectar con el catálogo de Spring Boot");
 
         const todosLosProductos = await respuesta.json();
 
-        // Filtrar productos por el ID de categoría
+        // Filtramos aquí para no depender de un endpoint inexistente en Java
         const productosFiltrados = todosLosProductos.filter(p => 
             p.categoria && p.categoria.idCategoria === idCategoria
         );
@@ -56,16 +54,13 @@ async function cargarCatalogoFiltrado(idCategoria, contenedor) {
             return;
         }
 
-        // Renderizar las tarjetas
         productosFiltrados.forEach(producto => {
-            // Manejador inteligente de imágenes
             let imgRuta = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800&auto=format&fit=crop";
             if (producto.imagenUrl && producto.imagenUrl.trim() !== "") {
                 const url = producto.imagenUrl.trim();
                 imgRuta = url.startsWith('http') ? url : `http://localhost:8080${url.startsWith('/') ? '' : '/'}${url}`;
             }
 
-            // Renderizado seguro del precio para prevenir fallos por valores nulos
             const precioFormateado = (producto.precio && typeof producto.precio === 'number') 
                 ? producto.precio.toLocaleString('es-MX') 
                 : '0';
@@ -74,6 +69,7 @@ async function cargarCatalogoFiltrado(idCategoria, contenedor) {
                 <div class="col">
                     <div class="card h-100 border-0 shadow-sm product-card" 
                          data-id="${producto.idProducto}" 
+                         data-id-producto="${producto.idProducto}"
                          data-nombre="${producto.nombreProducto}" 
                          data-precio="${producto.precio}" 
                          data-imagen="${imgRuta}"
@@ -98,8 +94,8 @@ async function cargarCatalogoFiltrado(idCategoria, contenedor) {
                                 </div>
                                 
                                 <div class="d-flex gap-2">
-                                    <a href="/pages/detalle-producto.html?id=${producto.idProducto}" class="btn btn-outline-dark btn-sm flex-grow-1 rounded-pill d-flex align-items-center justify-content-center gap-1">
-                                        <i class="bi bi-eye"></i> Ver Detalle
+                                    <a href="detalle-producto.html?id=${producto.idProducto}" class="btn btn-outline-dark btn-sm flex-grow-1 rounded-pill d-flex align-items-center justify-content-center gap-1">
+                                         <i class="bi bi-eye"></i> Ver Detalle
                                     </a>
                                     <button class="btn btn-gold btn-sm rounded-pill px-3" onclick="agregarProductoDesdeCard(this)" ${producto.stock <= 0 ? 'disabled' : ''}>
                                         <i class="bi bi-cart-plus"></i>
