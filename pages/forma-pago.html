@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forma de pago - MuebleArte</title>
     <link rel="icon" type="image/png" href="/assets/pestañaimg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -13,6 +14,16 @@
 </head>
 <body class="pagina-pasarela">
 
+<header class="header-mueble-arte">
+  <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
+    <div class="logo-wrapper"><a href="/index.html"><img src="/assets/logo-heather.png" alt="Mueble Arte" class="header-logo"></a></div>
+    <div class="contenedor-menu d-flex align-items-center">
+      <ul class="nav align-items-center gap-3 mx-lg-3">
+        <li><a href="/index.html" class="nav-link-custom">Inicio</a></li>
+        <li><a href="/pages/about-us.html" class="nav-link-custom">Acerca de nosotros</a></li>
+      </ul>
+    </div>
+  </nav>
     <!------------------------------------------------------------------------------------------Encabezado Inicio---------------------------------------------------------------------------------------------------------------------------------------------------------->
 <header class="header-mueble-arte">
   <nav class="container-fluid d-flex align-items-center py-3 px-4 justify-content-between">
@@ -84,6 +95,17 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="checkout-card">
+                <h1 class="h3 fw-bold mb-4"><i class="bi bi-credit-card-fill me-2" style="color: var(--dorado-acento);"></i>Forma de pago</h1>
+                <form id="formPago" onsubmit="return false;">
+                    <div class="mb-3"><label class="form-label">Número de tarjeta *</label><input type="text" class="form-control" placeholder="0000 0000 0000 0000" required></div>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-7"><label class="form-label">Fecha de vencimiento *</label><input type="text" class="form-control" placeholder="MM/AA" required></div>
+                        <div class="col-md-5"><label class="form-label">CVV *</label><input type="text" class="form-control" placeholder="123" required></div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between gap-3">
+                        <a href="./direccion-envio.html" class="btn btn-outline-dark btn-capsule px-4">Volver</a>
+                        <a href="./confirmacion-pedido.html" class="btn btn-gold btn-capsule px-4 d-inline-flex align-items-center justify-content-center">Continuar →</a>
                 <h1 class="h3 fw-bold mb-4"><i class="bi bi-credit-card-fill me-2" style="color: var(--dorado-acento);"></i>Datos de pago</h1>
                 <div class="payment-methods">
                     <span class="badge bg-light text-dark p-2"><i class="bi bi-credit-card"></i> Tarjeta</span>
@@ -108,6 +130,7 @@
 
 <div class="container-fluid mt-5 p-0 bg-marino">
     <div class="container" id="piepagina">
+        <footer class="pt-5 pb-3"><p class="mb-0 text-white-50">© 2026 MuebleArte, Inc. Todos los derechos reservados.</p></footer>
         <footer class="pt-5 pb-3">
             <div class="row">
                 <div class="col-6 col-md-2 mb-3"><h5>Secciones</h5><ul class="nav flex-column"><li class="nav-item mb-2"><a href="/index.html" class="nav-link p-0">Inicio</a></li><li class="nav-item mb-2"><a href="/pages/carrito.html" class="nav-link p-0">Carrito</a></li><li class="nav-item mb-2"><a href="/pages/login.html" class="nav-link p-0">Iniciar sesión</a></li><li class="nav-item mb-2"><a href="/pages/registro.html" class="nav-link p-0">Registrarse</a></li></ul></div>
@@ -124,6 +147,8 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 <script src="../js/auth.js"></script>
 <script src="/scripts/menu-pasarela.js"></script>
 <script src="../js/forma-pago.js"></script>
